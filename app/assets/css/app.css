@@ -1,3 +1,16 @@
 @import "tailwindcss";
 /*!*TODO "Unknown at-rule" is likely a bug*!*/
 @plugin "daisyui";
+
+html, body, #__nuxt {
+    height: 100%;
+}
+
+#__nuxt {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    min-height: 100%;
+}
