@@ -1,7 +1,6 @@
 <template>
-  <div>
     <NuxtRouteAnnouncer />
     <AppHeader/>
     <NuxtPage/>
-  </div>
+    <AppFooter/>
 </template>
