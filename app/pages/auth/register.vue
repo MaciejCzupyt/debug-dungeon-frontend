@@ -3,6 +3,8 @@
 </script>
 
 <template>
+  <title>DebugDungeon - Register</title>
+
   <h1>Register</h1>
 </template>
 
