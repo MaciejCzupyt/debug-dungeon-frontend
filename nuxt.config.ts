@@ -6,8 +6,10 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   pages: true,
   css: ['~/assets/css/app.css'],
+  modules: ['@nuxt/eslint'],
 })
