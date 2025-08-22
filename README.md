@@ -49,3 +49,29 @@ yarn preview
 # bun
 bun run preview
 ```
+
+## TODO
+- [ ] Home page view
+  - [x] Project list link
+  - [x] Create project link
+  - [x] Login/Register/User settings link
+  - [ ] Create proper user functionality
+- [ ] Projects list view
+  - [ ] Filter by user
+  - [ ] Filter by tags
+  - [ ] Search
+- [ ] Project detail view
+  - [ ] Comments
+    - [ ] Comments list
+    - [ ] Create comment form
+    - [ ] Delete comment
+    - [ ] Edit comment?
+  - [ ] Edit/Delete Project redirects
+- [ ] Create Project form
+- [ ] Edit Project form
+- [ ] Auth
+  - [ ] Login form
+  - [ ] Register form
+- [ ] User details view
+  - [ ] List user projects
+  - [ ] List user comments
