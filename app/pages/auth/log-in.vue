@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <title>DebugDungeon - Login</title>
+  <title>Debug-Dungeon - Login</title>
   <h1>Login</h1>
 </template>
 

@@ -3,9 +3,8 @@
 </script>
 
 <template>
-  <title>DebugDungeon - Register</title>
-
-  <h1>Register</h1>
+    <title>Debug-Dungeon - Register</title>
+    <h1>Register</h1>
 </template>
 
 <style scoped>
