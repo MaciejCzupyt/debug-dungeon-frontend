@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<title>Debug-Dungeon - Detials</title>
+<title>Debug-Dungeon - Details</title>
 <h1>Project details</h1>
 </template>
 
