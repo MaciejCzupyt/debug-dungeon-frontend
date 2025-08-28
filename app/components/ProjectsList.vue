@@ -32,8 +32,9 @@ const shirtSizeToIndex = (size: string) => {
 <template>
   <ul class="flex flex-col gap-4 w-full max-w-2xl mx-auto">
     <li v-for="project in projects" :key="project.id">
+      <!-- false "Cannot resolve file ' " warning, everything works well -->
       <NuxtLink
-          :to="`/projects/${project.id}`"
+          :to="{ name: 'projects-id', params: {id:project.id} }"
           class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block"
       >
         <div class="card-body">
