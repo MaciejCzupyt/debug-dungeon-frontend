@@ -9,3 +9,11 @@ html, body, #__nuxt {
     display: flex;
     flex-direction: column;
 }
+
+.mask-tshirt {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 3L12 5 8 3 4 6v5h2v10h12V11h2V6l-4-3z'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask-size: contain;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 3L12 5 8 3 4 6v5h2v10h12V11h2V6l-4-3z'/%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
