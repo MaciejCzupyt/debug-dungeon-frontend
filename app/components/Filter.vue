@@ -4,10 +4,13 @@
 <template>
   <div class="flex flex-col items-center">
     <label class="">Filter</label>
-<!--    <div class="divider my-1"/>-->
     <div class="flex gap-3 items-end">
       <div class="flex flex-col">
         <p>Shirt size</p>
+        <!--
+        TODO radio buttons cannot be unchecked, if a user checks a shirt size but then wants to uncheck it to search
+          for projects without specifying the exact shirt size, he is unable to
+         -->
         <div class="rating gap-1">
           <input type="radio" name="rating-3" class="mask mask-tshirt bg-green-400" aria-label="S"/>
           <input type="radio" name="rating-3" class="mask mask-tshirt bg-yellow-400" aria-label="M" />
