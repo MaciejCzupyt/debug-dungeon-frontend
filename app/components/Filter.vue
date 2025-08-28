@@ -9,9 +9,9 @@
       <div class="flex flex-col">
         <p>Shirt size</p>
         <div class="rating gap-1">
-          <input type="radio" name="rating-3" class="mask mask-heart bg-green-400" aria-label="S" checked="checked"/>
-          <input type="radio" name="rating-3" class="mask mask-heart bg-yellow-400" aria-label="M" />
-          <input type="radio" name="rating-3" class="mask mask-heart bg-red-400" aria-label="L" />
+          <input type="radio" name="rating-3" class="mask mask-tshirt bg-green-400" aria-label="S"/>
+          <input type="radio" name="rating-3" class="mask mask-tshirt bg-yellow-400" aria-label="M" />
+          <input type="radio" name="rating-3" class="mask mask-tshirt bg-red-400" aria-label="L" />
         </div>
       </div>
 
