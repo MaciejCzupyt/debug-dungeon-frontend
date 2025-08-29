@@ -21,8 +21,6 @@ const project = ref(
 
     Nulla facilisi. Sed non elit sit amet leo aliquam tempus et quis metus. Phasellus non dapibus leo, pellentesque congue odio. Aliquam feugiat metus est, eu pellentesque ante mattis a. Proin velit mi, tempor non pretium ac, sodales vel libero. Proin eu sagittis neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus purus ut tincidunt euismod. Integer tincidunt ac mi vitae venenatis. Quisque sed ornare tellus. Proin convallis eros vitae tellus tincidunt, fringilla ullamcorper turpis malesuada. Proin at diam nisi. Proin et dolor diam.`
     ,
-
-
   }
 )
 
@@ -38,7 +36,7 @@ const shirtSizeToIndex = (size: string) => {
   <title>Debug-Dungeon - Project Details</title>
 
   <div class="flex flex-col w-full mt-5 mb-10 px-10 items-center">
-    <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+    <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
 
       <div class="flex justify-between mb-4 items-end">
         <!-- Title -->
@@ -65,7 +63,10 @@ const shirtSizeToIndex = (size: string) => {
 
       <!-- User -->
       <div class="flex justify-between mb-2">
+        <!-- user -->
         <p class="text-sm text-gray-500">{{ project.user }}</p>
+
+        <!-- dates -->
         <div class="flex text-sm text-gray-500">
           <div class="flex gap-1">
             <p>{{ project.created }}</p>
@@ -73,10 +74,6 @@ const shirtSizeToIndex = (size: string) => {
           </div>
         </div>
       </div>
-
-
-      <!--Dates -->
-
 
       <!-- Repo Link -->
       <div class="mb-4">
@@ -102,7 +99,10 @@ const shirtSizeToIndex = (size: string) => {
       <div class="prose max-w-full">
         <p>{{ project.description }}</p>
       </div>
+    </div>
 
+    <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+      <CommentsList/>
     </div>
   </div>
 </template>
