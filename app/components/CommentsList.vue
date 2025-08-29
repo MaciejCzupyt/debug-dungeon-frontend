@@ -46,6 +46,11 @@ const comments = ref([
         <span v-else class="text-sm text-gray-600">
           No repository link
         </span>
+
+        <!-- Delete wrapper -->
+        <div v-if="comment.user==='YOU'" class="flex gap-1">
+          <a href="/TODO" class="link link-secondary">Delete</a>
+        </div>
       </div>
 
       <!-- content -->
