@@ -51,27 +51,60 @@ bun run preview
 ```
 
 ## TODO
-- [ ] Home page view
-  - [x] Project list link
-  - [x] Create project link
-  - [x] Login/Register/User settings link
-  - [ ] Create proper user functionality
-- [ ] Projects list view
-  - [ ] Filter by user
-  - [ ] Filter by tags
-  - [ ] Search
+### Visual
+- [x] Navbar
+- [x] Home page view
+    - [x] Project list link
+    - [x] Create project link
+    - [x] Login/Register/User settings link
+- [x] Projects list view
+    - [x] Filter by user
+    - [x] Search
+    - [x] List
+    - [x] Pagination
 - [ ] Project detail view
-  - [ ] Comments
-    - [ ] Comments list
-    - [ ] Create comment form
-    - [ ] Delete comment
-    - [ ] Edit comment?
-  - [ ] Edit/Delete Project redirects
+    - [x] Project details
+    - [ ] Comments
+        - [x] Comments list
+        - [x] Delete button for own comment
+        - [ ] Create comment form
+    - [x] Edit/Delete Project redirects
 - [ ] Create Project form
 - [ ] Edit Project form
 - [ ] Auth
-  - [ ] Login form
-  - [ ] Register form
+    - [ ] Login form
+    - [ ] Register form
 - [ ] User details view
+    - [ ] List user projects
+    - [ ] List user comments
+### Logic
+- [ ] Auth
+    - [ ] Login
+    - [ ] Register
+    - [ ] Session functionality
+- [ ] Navbar
+  - [ ] Login/Register/Profile responsiveness based on if user is logged in
+  - [ ] New Project button visibility based on if user is logged in
+- [ ] Home page view
+  - [ ] Responsiveness to if user is logged in
+- [ ] Projects list view
+  - [ ] Filter
+    - [ ] Shirt size filter functionality
+    - [ ] Tag filter functionality
+    - [ ] User filter functionality
+  - [ ] Search functionality
+  - [ ] Pagination functionality
+  - [ ] Proper project id functionality
+- [ ] Project detail view
+  - [ ] Responsiveness to session and owner of project along with the edit/delete buttons
+  - [ ] Edit functionality
+  - [ ] Delete functionality
+  - [ ] Comments
+    - [ ] Responsiveness to whether user owns comment along with the delete button
+      - [ ] Delete functionality
+    - [ ] Create comment functionality
+- [ ] Create Project functionality
+- [ ] Edit Project functionality
+- [ ] User details
   - [ ] List user projects
   - [ ] List user comments
