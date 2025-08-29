@@ -42,13 +42,13 @@ const comments = ref([
         </a>
 
         <!-- no link -->
-        <span v-else class="text-sm text-gray-500">
+        <span v-else class="text-sm text-gray-600">
           No repository link
         </span>
       </div>
 
       <!-- content -->
-      <p>
+      <p class="text-gray-300">
         {{comment.content}}
       </p>
 
