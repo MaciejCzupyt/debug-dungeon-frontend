@@ -62,14 +62,14 @@ bun run preview
     - [x] Search
     - [x] List
     - [x] Pagination
-- [ ] Project detail view
+- [x] Project detail view
     - [x] Project details
-    - [ ] Comments
+    - [x] Comments
         - [x] Comments list
         - [x] Delete button for own comment
-        - [ ] Create comment form
+        - [x] Create comment form
     - [x] Edit/Delete Project redirects
-- [ ] Create Project form
+- [x] Create Project form
 - [ ] Edit Project form
 - [ ] Auth
     - [ ] Login form
