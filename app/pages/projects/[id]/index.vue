@@ -80,7 +80,10 @@ const route = useRoute()
           <!-- User and Dates wrapper -->
           <div class="flex justify-between mb-2">
             <!-- user -->
-            <p class="text-sm text-gray-500">{{ project.user }}</p>
+            <p class="text-sm text-gray-500">
+              <!-- The potential warning "Cannot resolve file '$'{'project.user}`' " is false -->
+              <NuxtLink :to="`/user/${project.user}`">{{ project.user }}</NuxtLink>
+            </p>
 
             <!-- Dates -->
             <div class="flex text-sm text-gray-500">
