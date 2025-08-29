@@ -117,8 +117,10 @@ const route = useRoute()
           </div>
         </div>
 
-        <!-- CommentsList -->
-        <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+        <!-- CommentForm and CommentsList -->
+        <div class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+          <CommentForm/>
+          <div class="divider"/>
           <CommentsList/>
         </div>
 
