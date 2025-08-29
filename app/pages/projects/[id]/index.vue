@@ -30,80 +30,112 @@ const shirtSizeToIndex = (size: string) => {
   if (size === "L") return 2
   return -1
 }
+
+const router = useRouter()
+const route = useRoute()
 </script>
 
 <template>
   <title>Debug-Dungeon - Project Details</title>
 
-  <div class="flex flex-col w-full mt-5 mb-10 px-10 items-center">
-    <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
+  <!-- Page wrapper -->
+  <div class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
 
-      <div class="flex justify-between mb-4 items-end">
-        <!-- Title -->
-        <h1 class="text-3xl font-bold ">{{ project.title }}</h1>
+    <!-- Back button -->
+    <button class="btn rounded-xl w-25 btn-soft mt-2" @click="$router.push('/projects')">
+      Back
+    </button>
 
-        <!-- Shirt size -->
-        <div class="rating gap-1">
-          <input
-              v-for="(label, i) in ['S','M','L']"
-              :key="label"
-              type="radio"
-              :name="`rating-${project.id}`"
-              class="mask mask-tshirt"
-              :class="{
-              'bg-green-400': label === 'S',
-              'bg-yellow-400': label === 'M',
-              'bg-red-400': label === 'L'
-            }"
-              :checked="shirtSizeToIndex(project.shirt_size) === i"
-              disabled
-          />
-        </div>
-      </div>
+    <!-- Content -->
+    <div class="flex justify-center items-center">
+      <div class="self-center">
 
-      <!-- User -->
-      <div class="flex justify-between mb-2">
-        <!-- user -->
-        <p class="text-sm text-gray-500">{{ project.user }}</p>
+        <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
 
-        <!-- dates -->
-        <div class="flex text-sm text-gray-500">
-          <div class="flex gap-1">
-            <p>{{ project.created }}</p>
-            <p v-if="project.created !== project.modified">(Edit: {{ project.modified }})</p>
+          <!-- Title and Shirt size Wrapper -->
+          <div class="flex justify-between mb-4 items-end">
+
+            <!-- Title -->
+            <h1 class="text-3xl font-bold ">{{ project.title }}</h1>
+
+            <!-- Shirt size -->
+            <div class="rating gap-1">
+              <input
+                  v-for="(label, i) in ['S','M','L']"
+                  :key="label"
+                  type="radio"
+                  :name="`rating-${project.id}`"
+                  class="mask mask-tshirt"
+                  :class="{
+                'bg-green-400': label === 'S',
+                'bg-yellow-400': label === 'M',
+                'bg-red-400': label === 'L'
+              }"
+                  :checked="shirtSizeToIndex(project.shirt_size) === i"
+                  disabled
+              />
+            </div>
+          </div>
+
+          <!-- User and Dates wrapper -->
+          <div class="flex justify-between mb-2">
+            <!-- user -->
+            <p class="text-sm text-gray-500">{{ project.user }}</p>
+
+            <!-- Dates -->
+            <div class="flex text-sm text-gray-500">
+              <div class="flex gap-1">
+                <p>{{ project.created }}</p>
+                <p v-if="project.created !== project.modified">(Edit: {{ project.modified }})</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Repo Link -->
+          <div class="mb-4">
+            <a :href="project.repo_link" target="_blank" class="link link-primary">
+              View Repository
+            </a>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-6">
+          <span
+              v-for="tag in project.tags"
+              :key="tag"
+              class="badge badge-primary"
+          >
+            {{ tag }}
+          </span>
+          </div>
+
+          <div class="divider"/>
+
+          <!-- Description -->
+          <div class="prose max-w-full">
+            <p>{{ project.description }}</p>
           </div>
         </div>
-      </div>
 
-      <!-- Repo Link -->
-      <div class="mb-4">
-        <a :href="project.repo_link" target="_blank" class="link link-primary">
-          View Repository
-        </a>
-      </div>
+        <!-- CommentsList -->
+        <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+          <CommentsList/>
+        </div>
 
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-6">
-        <span
-            v-for="tag in project.tags"
-            :key="tag"
-            class="badge badge-primary"
-        >
-          {{ tag }}
-        </span>
-      </div>
-
-      <div class="divider"/>
-
-      <!-- Description -->
-      <div class="prose max-w-full">
-        <p>{{ project.description }}</p>
       </div>
     </div>
 
-    <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
-      <CommentsList/>
+    <!-- Edit/Delete buttons -->
+    <div class="flex flex-col w-25 gap-2 mt-2">
+      <button class="btn rounded-xl btn-soft btn-warning"
+      @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })">
+        Edit
+      </button>
+      <button class="btn rounded-xl btn-soft btn-error" @click="router.push('/TODO')">
+        Delete
+      </button>
     </div>
+
   </div>
 </template>
 
