@@ -109,7 +109,7 @@ const shirtSizeToIndex = (size: string) => {
 </script>
 
 <template>
-  <ul class="flex flex-col gap-4 max-w-3xl mx-auto">
+  <ul class="flex flex-col gap-4 max-w-5xl">
     <li v-for="project in projects" :key="project.id">
       <!-- false "Cannot resolve file ' " warning, everything works well -->
       <NuxtLink

@@ -4,13 +4,18 @@
 
 <template>
   <title>Debug-Dungeon - Projects</title>
-  <div class="flex flex-col w-full mt-5 mb-10">
-    <div class="flex justify-around items-end mx-10">
-      <SearchBar></SearchBar>
-      <Filter></Filter>
+  <div class="flex flex-col w-full mt-5 mb-10 items-center">
+
+<!--    <div class="divider"></div>-->
+    <div class="flex gap-5 w-full justify-center">
+      <div class="flex flex-col items-start w-xs max-w-xs">
+        <SearchBar></SearchBar>
+        <div class="divider"/>
+        <label class="self-center font-bold">Filter</label>
+        <Filter></Filter>
+      </div>
+      <ProjectsList class="w-full"/>
     </div>
-    <div class="divider w-[75vw] mx-auto"></div>
-    <ProjectsList class="w-full"/>
     <Pagination class="self-center mt-5"/>
   </div>
 </template>
