@@ -56,7 +56,7 @@ const route = useRoute()
           <div class="flex justify-between mb-4 items-end">
 
             <!-- Title -->
-            <h1 class="text-3xl font-bold ">{{ project.title }}</h1>
+            <h1 class="text-3xl font-bold">{{ project.title }}</h1>
 
             <!-- Shirt size -->
             <div class="rating gap-1">
