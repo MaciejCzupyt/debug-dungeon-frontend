@@ -70,9 +70,9 @@ bun run preview
         - [x] Create comment form
     - [x] Edit/Delete Project redirects
 - [x] Create Project form
-- [ ] Edit Project form
+- [x] Edit Project form
 - [ ] Auth
-    - [ ] Login form
+    - [x] Login form
     - [ ] Register form
 - [ ] User details view
     - [ ] List user projects
