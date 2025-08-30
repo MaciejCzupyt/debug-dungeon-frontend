@@ -71,9 +71,9 @@ bun run preview
     - [x] Edit/Delete Project redirects
 - [x] Create Project form
 - [x] Edit Project form
-- [ ] Auth
+- [x] Auth
     - [x] Login form
-    - [ ] Register form
+    - [x] Register form
 - [ ] User details view
     - [ ] List user projects
     - [ ] List user comments
