@@ -25,7 +25,7 @@
           <ul class="bg-neutral rounded-t-none p-2">
             <li><a href="/auth/log-in">Login</a></li>
             <li><a href="/auth/register">Register</a></li>
-            <li><a href="/TODO">Profile</a></li>
+            <li><a href="/user/user/projects">Profile</a></li>
           </ul>
         </details>
       </li>
