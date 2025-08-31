@@ -74,9 +74,9 @@ bun run preview
 - [x] Auth
     - [x] Login form
     - [x] Register form
-- [ ] User details view
-    - [ ] List user projects
-    - [ ] List user comments
+- [x] User details view
+    - [x] List user projects
+    - [x] List user comments
 ### Logic
 - [ ] Auth
     - [ ] Login
