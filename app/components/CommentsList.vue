@@ -32,7 +32,7 @@ const comments = ref([
         <!-- user -->
         <p class="font-bold">
           <NuxtLink
-              :to="{name:'user-username', params:{username:comment.user}}"
+              :to="{name:'user-username-projects', params:{username:comment.user}}"
           >
             {{comment.user}}
           </NuxtLink>
