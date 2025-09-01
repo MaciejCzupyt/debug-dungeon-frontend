@@ -79,9 +79,10 @@ bun run preview
     - [x] List user comments
 ### Logic
 - [ ] Auth
-    - [ ] Login
-    - [ ] Register
-    - [ ] Session functionality
+  - [x] Sessions
+  - [x] Login
+  - [ ] Logout
+  - [ ] Register
 - [ ] Navbar
   - [ ] Login/Register/Profile responsiveness based on if user is logged in
   - [ ] New Project button visibility based on if user is logged in
