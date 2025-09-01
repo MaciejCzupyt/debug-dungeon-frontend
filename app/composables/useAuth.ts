@@ -1,7 +1,8 @@
+const user = ref(null)
+const error = ref<Error | null>(null)
+
 export const useAuth = () => {
     const {fetchApi} = useApi()
-    const user = ref(null)
-    const error = ref<Error | null>(null)
 
     const login = async (username: string, password: string) => {
         try {
