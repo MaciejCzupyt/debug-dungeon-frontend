@@ -1,4 +1,9 @@
-const user = ref(null)
+interface User {
+    username: string
+    date_joined: string
+}
+
+const user = ref<User | null>(null)
 const error = ref<Error | null>(null)
 
 export const useAuth = () => {
