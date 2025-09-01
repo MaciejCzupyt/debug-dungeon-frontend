@@ -5,9 +5,12 @@ onMounted(async () => {
   await useCsrf()
 
   const {user} = useAuth()
+  console.log(`app.vue-User:${user}`)
   try {
     if(user.value === null) {
-      user.value = await fetchApi(`users/me/`)
+      const fetchedUser = await fetchApi(`users/me`)
+      if(fetchedUser.username !== "")
+        user.value = fetchedUser
     }
 
   } catch (err: any) {
