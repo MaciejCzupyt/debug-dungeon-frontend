@@ -55,18 +55,17 @@
           <h2 class="card-title">ACCOUNT DETAILS</h2>
           <p>View or edit your account, projects and comments.</p>
           <div class="card-actions justify-center">
-            <router-link class="btn flex-1" to="/TODO">View account details</router-link>
+            <router-link class="btn flex-1" :to="`/user/${user.username}/projects`">View account details</router-link>
           </div>
         </div>
       </div>
     </div>
-
   </main>
-
 </template>
 
 <script setup>
 const {user} = useAuth()
+// TODO fix the page initially showing guest page for a second before flickering to the correct page
 </script>
 
 <style scoped>
