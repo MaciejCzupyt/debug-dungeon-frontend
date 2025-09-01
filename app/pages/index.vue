@@ -22,7 +22,7 @@
 
     <div v-else class="card bg-neutral shadow-sm">
       <div class="card-body flex">
-        <h2 class="card-title">Hello {{user}}!</h2>
+        <h2 class="card-title">Hello {{user.username}}!</h2>
       </div>
     </div>
 
@@ -68,15 +68,7 @@
 </template>
 
 <script setup>
-  function toggleUser() {
-    if(user.value === "") {
-      user.value = "John Smith";
-    } else {
-      user.value = "";
-    }
-  }
-
-  const user = ref("John Smith");
+const {user} = useAuth()
 </script>
 
 <style scoped>
