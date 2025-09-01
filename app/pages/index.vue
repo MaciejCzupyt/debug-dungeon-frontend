@@ -61,8 +61,6 @@
       </div>
     </div>
 
-    <button class="btn btn-error" @click="toggleUser">DEBUG: Toggle User</button>
-
   </main>
 
 </template>
