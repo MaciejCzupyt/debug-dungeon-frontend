@@ -1,5 +1,11 @@
 <script setup lang="ts">
+const { user, logout } = useAuth()
+const router = useRouter()
 
+const onLogout = async () => {
+  await logout()
+  await router.push('/')
+}
 </script>
 
 <template>
@@ -17,15 +23,17 @@
     </div>
 
     <ul class="menu menu-horizontal px-4 ml-auto">
-      <li><a href="/projects/new">New Project</a></li>
+      <li v-if="user"><a href="/projects/new">New Project</a></li>
       <li><a href="/projects">Projects list</a></li>
       <li>
         <details>
-          <summary>User</summary>
+          <summary v-if="user">{{user.username}}</summary>
+          <summary v-else>User</summary>
           <ul class="bg-neutral rounded-t-none p-2">
-            <li><a href="/auth/log-in">Login</a></li>
-            <li><a href="/auth/register">Register</a></li>
-            <li><a href="/user/user/projects">Profile</a></li>
+            <li v-if="!user"><a href="/auth/log-in">Login</a></li>
+            <li v-if="!user"><a href="/auth/register">Register</a></li>
+            <li v-if="user"><a @click="onLogout">Logout</a></li>
+            <li v-if="user"><a :href="`/user/${user.username}/projects`">Profile</a></li>
           </ul>
         </details>
       </li>
