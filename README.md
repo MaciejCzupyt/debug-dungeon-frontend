@@ -80,15 +80,22 @@ bun run preview
 ### Logic
 - [ ] Auth
   - [x] Sessions
-  - [x] Login
+  - [ ] Login
+    - [x] General
+    - [x] Initial validation logic
+    - [ ] Proper validation logic
   - [x] Logout
   - [ ] Register
-- [ ] Navbar
-  - [ ] Login/Register/Profile responsiveness based on if user is logged in
-  - [ ] New Project button visibility based on if user is logged in
-- [ ] Home page view
-  - [ ] Responsiveness to if user is logged in
+      - [x] General
+      - [x] Initial validation logic
+      - [ ] Proper validation logic
+- [x] Navbar
+  - [x] Login/Register/Profile responsiveness based on if user is logged in
+  - [x] New Project button visibility based on if user is logged in
+- [x] Home page view
+  - [x] Responsiveness to if user is logged in
 - [ ] Projects list view
+  - [ ] List of projects
   - [ ] Filter
     - [ ] Shirt size filter functionality
     - [ ] Tag filter functionality
