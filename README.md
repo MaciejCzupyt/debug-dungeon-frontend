@@ -81,7 +81,7 @@ bun run preview
 - [ ] Auth
   - [x] Sessions
   - [x] Login
-  - [ ] Logout
+  - [x] Logout
   - [ ] Register
 - [ ] Navbar
   - [ ] Login/Register/Profile responsiveness based on if user is logged in
