@@ -83,7 +83,7 @@ const route = useRoute()
             <p class="text-sm text-gray-500">
               <!-- The potential warning "Cannot resolve file '$'{'project.user}`' " is false -->
               <NuxtLink
-                  :to="{ name: 'user-username', params: {username:project.user} }">{{ project.user }}</NuxtLink>
+                  :to="{ name: 'user-username-projects', params: {username:project.user} }">{{ project.user }}</NuxtLink>
             </p>
 
             <!-- Dates -->
