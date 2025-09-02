@@ -1,98 +1,7 @@
 <script setup lang="ts">
-let id = 0
-// temporary example list of projects
-const projects = ref([
-  {
-    id: id++,
-    title: "Project1",
-    shirt_size: "S",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "01-01-2025",
-    user: "user1",
-  },
-  {
-    id: id++,
-    title: "Project2",
-    shirt_size: "L",
-    tags: ["tag4", "tag5"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user2",
-  },
-  {
-    id: id++,
-    title: "Project3",
-    shirt_size: "S",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "01-01-2025",
-    user: "user1",
-  },
-  {
-    id: id++,
-    title: "Project4",
-    shirt_size: "L",
-    tags: ["tag4", "tag5"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user2",
-  },
-  {
-    id: id++,
-    title: "Project5",
-    shirt_size: "S",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "01-01-2025",
-    user: "user1",
-  },
-  {
-    id: id++,
-    title: "Project6",
-    shirt_size: "L",
-    tags: ["tag4", "tag5"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user2",
-  },
-  {
-    id: id++,
-    title: "Project7",
-    shirt_size: "S",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "01-01-2025",
-    user: "user1",
-  },
-  {
-    id: id++,
-    title: "Project8",
-    shirt_size: "L",
-    tags: ["tag4", "tag5"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user2",
-  },
-  {
-    id: id++,
-    title: "Project9",
-    shirt_size: "S",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "01-01-2025",
-    user: "user1",
-  },
-  {
-    id: id++,
-    title: "Project10",
-    shirt_size: "L",
-    tags: ["tag4", "tag5"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user2",
-  },
-])
+import type {Project} from '~/types/project'
+
+defineProps<{ projects: Project[] }>()
 
 /*
 TODO proper pagination will be implemented when connecting the backend and frontend, there is no point of implementing
@@ -163,6 +72,15 @@ const shirtSizeToIndex = (size: string) => {
           </div>
         </div>
       </NuxtLink>
+    </li>
+    <li v-if="projects.length===0">
+      <div class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block">
+        <div class="card-body">
+          <div class="flex justify-center items-center">
+            No projects to list
+          </div>
+        </div>
+      </div>
     </li>
   </ul>
 </template>
