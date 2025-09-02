@@ -13,7 +13,6 @@ export const useAuth = () => {
         try {
             await fetchApi("auth/login", {
                 method: "POST",
-                credentials: "include",
                 // csrftoken.value can be string | null, so we add a... NULLISH COALESCING OPERATOR fallback
                 // (that name rolls of the tongue and is easy to remember)
                 headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
