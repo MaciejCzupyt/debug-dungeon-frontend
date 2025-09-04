@@ -6,14 +6,18 @@ const route = useRoute()
 const {fetchApi} = useApi()
 
 const project = ref<Project | null>(null)
+const projectLoading = ref(false)
 
 onMounted(async () => {
+  projectLoading.value = true
+
   const id = computed(() => route.params.id)
 
   project.value = await fetchApi(`projects/${id.value}`, {
     method: "GET",
     headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
   })
+  projectLoading.value = false
 })
 
 const shirtSizeToIndex = (size: string) => {
@@ -28,7 +32,7 @@ const shirtSizeToIndex = (size: string) => {
   <title>Debug-Dungeon - Project Details</title>
 
   <!-- Page wrapper -->
-  <div v-if="project" class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
+  <div v-if="!projectLoading && project" class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
 
     <!-- Back button -->
     <button class="btn rounded-xl w-25 btn-soft mt-2" @click="$router.push('/projects')">
@@ -36,8 +40,8 @@ const shirtSizeToIndex = (size: string) => {
     </button>
 
     <!-- Content -->
-    <div class="flex justify-center items-center">
-      <div class="self-center">
+    <div class="flex justify-center items-center w-full max-w-5xl">
+      <div class="self-center w-full max-w-5xl">
 
         <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
 
