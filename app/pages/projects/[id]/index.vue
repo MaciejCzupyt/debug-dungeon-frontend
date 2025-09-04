@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import type {Project} from '~/types/project.ts'
+import type {Comment} from '~/types/comment.ts'
 
 const router = useRouter()
 const route = useRoute()
 const {fetchApi} = useApi()
 
 const project = ref<Project | null>(null)
+const comments = ref<Comment[]>([])
+
+const commentLoading = ref(false)
 const projectLoading = ref(false)
 
 onMounted(async () => {
   projectLoading.value = true
+  commentLoading.value = true
 
   const id = computed(() => route.params.id)
 
@@ -18,6 +23,12 @@ onMounted(async () => {
     headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
   })
   projectLoading.value = false
+
+  comments.value = await fetchApi(`projects/${id.value}/comments`, {
+    method: "GET",
+    headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+  })
+  commentLoading.value = false
 })
 
 const shirtSizeToIndex = (size: string) => {
@@ -114,11 +125,21 @@ const shirtSizeToIndex = (size: string) => {
           </div>
         </div>
 
+        <div v-if="commentLoading" class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+
         <!-- CommentForm and CommentsList -->
-        <div class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+        <div v-else-if="comments.length !== 0" class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
           <CommentForm/>
-          <div class="divider"/>
-          <CommentsList/>
+          <div class="divider my-1"/>
+          <CommentsList :comments="comments"/>
+        </div>
+
+        <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+          <CommentForm/>
+          <div class="divider my-1"/>
+          No comments yet
         </div>
 
       </div>
