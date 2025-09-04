@@ -84,8 +84,9 @@ bun run preview
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
     - [ ] <span style="color:blue">Proper value validation logic</span>
-  - [ ] <span style="color:red">Logout functionality</span>
-    - [ ] <span style="color:red">Fix issues with not logging out</span>
+  - [ ] Logout functionality
+    - [x] <span style="color:red">General</span>
+    - [ ] <span style="color:green">Fix issues with not logging out</span>
   - [ ] Register
     - [x] <span style="color:red">General</span>
     - [x] <span style="color:green">Initial validation logic</span>
@@ -106,13 +107,13 @@ bun run preview
   - [x] <span style="color:red">Proper project id functionality</span>
 - [ ] Project detail view
   - [x] <span style="color:red">General details view</span>
-  - [ ] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons </span>
+  - [x] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons</span>
   - [ ] <span style="color:red">Edit functionality</span>
   - [ ] <span style="color:red">Delete functionality</span>
   - [ ] Comments
     - [x] <span style="color:red">Comments list</span>
-    - [ ] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
-      - [ ] <span style="color:green">Delete functionality</span>
+    - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
+    - [ ] <span style="color:green">Delete functionality</span>
     - [ ] <span style="color:red">Create comment functionality</span>
 - [ ] <span style="color:red">Create Project functionality</span>
 - [ ] <span style="color:red">Edit Project functionality</span>
