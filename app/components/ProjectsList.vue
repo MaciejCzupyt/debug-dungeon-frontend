@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {Project} from '~/types/project'
 
-defineProps<{ projects: Project[] }>()
+defineProps<{ projects: Project[], projectsLoading: boolean }>()
 
 /*
 TODO proper pagination will be implemented when connecting the backend and frontend, there is no point of implementing
@@ -19,7 +19,14 @@ const shirtSizeToIndex = (size: string) => {
 
 <template>
   <ul class="flex flex-col gap-4 max-w-5xl">
-    <li v-for="project in projects" :key="project.id">
+    <li v-if="projectsLoading">
+      <div class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block">
+        <div class="flex items-center card-body">
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+      </div>
+    </li>
+    <li v-else-if="projects.length!==0" v-for="project in projects" :key="project.id">
       <!-- false "Cannot resolve file ' " warning, everything works well -->
       <NuxtLink
           :to="{ name: 'projects-id', params: {id:project.id} }"
@@ -73,7 +80,7 @@ const shirtSizeToIndex = (size: string) => {
         </div>
       </NuxtLink>
     </li>
-    <li v-if="projects.length===0">
+    <li v-else>
       <div class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block">
         <div class="card-body">
           <div class="flex justify-center items-center">
