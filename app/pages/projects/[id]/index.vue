@@ -1,28 +1,20 @@
 <script setup lang="ts">
-let id = 0
-const project = ref(
-  {
-    id: id++,
-    title: "Project1",
-    shirt_size: "S",
-    repo_link: "https://www.github.com/MaciejCzupyt/debug-dungeon-frontend",
-    tags: ["tag1", "tag2", "tag3"],
-    created: "01-01-2025",
-    modified: "02-01-2025",
-    user: "user1",
-    description:
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit vel felis ac imperdiet. Praesent at pulvinar neque. Ut eget leo porttitor, ullamcorper ipsum id, tincidunt elit. Phasellus dapibus sollicitudin felis, ac tempus risus venenatis sagittis. Aenean at ligula euismod, cursus arcu non, pretium ipsum. Pellentesque consequat pellentesque metus vel luctus. Vestibulum efficitur erat at mauris placerat vestibulum. Suspendisse euismod justo eu fringilla ultricies. Nunc purus ipsum, accumsan a tincidunt a, tincidunt eu purus. Vivamus est odio, elementum et turpis ut, blandit euismod odio. Praesent condimentum sem sapien, nec lobortis est tempus sed.
+import type {Project} from '~/types/project.ts'
 
-    Donec tempor ipsum sit amet pharetra mollis. Fusce blandit tempus dui sed auctor. Praesent a ante quis massa interdum ultrices. Praesent cursus bibendum egestas. Suspendisse porta nisi vitae nulla auctor consectetur. Maecenas libero odio, feugiat eget leo nec, tempor varius turpis. Morbi nec diam non quam condimentum tristique. Vestibulum auctor lacinia nunc, non scelerisque eros vehicula nec. Phasellus vehicula lorem nulla, sit amet volutpat turpis maximus sit amet. Mauris et efficitur mauris.
+const router = useRouter()
+const route = useRoute()
+const {fetchApi} = useApi()
 
-    Donec risus eros, gravida nec ante id, eleifend mattis nibh. Morbi ac augue sit amet leo luctus faucibus. Aliquam non semper velit. Duis scelerisque dapibus nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer consequat lorem gravida libero posuere, eu iaculis nulla aliquet. Proin luctus tincidunt nunc, ac gravida quam elementum sit amet. Nam ante tortor, venenatis quis lobortis vitae, lobortis eu risus. Donec vel nisi bibendum, sollicitudin massa et, egestas sapien. Maecenas tempus arcu id nulla hendrerit, facilisis euismod ante ullamcorper. Nam id viverra dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris id odio eros. Sed purus lectus, porta ac odio quis, lacinia mollis nunc. Duis ultrices efficitur feugiat.
+const project = ref<Project | null>(null)
 
-    Nam pulvinar, nisl eget vestibulum ultricies, dolor ligula vehicula lacus, ut venenatis lectus neque quis massa. Proin mollis mauris a dolor facilisis, facilisis feugiat metus vehicula. Integer sagittis eu felis eget aliquet. Praesent condimentum porttitor arcu eu vestibulum. Cras ut molestie sapien, sed varius quam. Pellentesque tempus dictum ullamcorper. Nunc consequat eros ac dolor ultrices, ac pharetra lacus dictum. Donec sed feugiat ipsum. Proin libero lacus, euismod ac odio a, auctor dictum lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris orci massa, suscipit in porta non, ullamcorper at diam.
+onMounted(async () => {
+  const id = computed(() => route.params.id)
 
-    Nulla facilisi. Sed non elit sit amet leo aliquam tempus et quis metus. Phasellus non dapibus leo, pellentesque congue odio. Aliquam feugiat metus est, eu pellentesque ante mattis a. Proin velit mi, tempor non pretium ac, sodales vel libero. Proin eu sagittis neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus purus ut tincidunt euismod. Integer tincidunt ac mi vitae venenatis. Quisque sed ornare tellus. Proin convallis eros vitae tellus tincidunt, fringilla ullamcorper turpis malesuada. Proin at diam nisi. Proin et dolor diam.`
-    ,
-  }
-)
+  project.value = await fetchApi(`projects/${id.value}`, {
+    method: "GET",
+    headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+  })
+})
 
 const shirtSizeToIndex = (size: string) => {
   if (size === "S") return 0
@@ -30,16 +22,13 @@ const shirtSizeToIndex = (size: string) => {
   if (size === "L") return 2
   return -1
 }
-
-const router = useRouter()
-const route = useRoute()
 </script>
 
 <template>
   <title>Debug-Dungeon - Project Details</title>
 
   <!-- Page wrapper -->
-  <div class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
+  <div v-if="project" class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
 
     <!-- Back button -->
     <button class="btn rounded-xl w-25 btn-soft mt-2" @click="$router.push('/projects')">
@@ -83,7 +72,7 @@ const route = useRoute()
             <p class="text-sm text-gray-500">
               <!-- The potential warning "Cannot resolve file '$'{'project.user}`' " is false -->
               <NuxtLink
-                  :to="{ name: 'user-username-projects', params: {username:project.user} }">{{ project.user }}</NuxtLink>
+                  :to="{ name: 'user-username-projects', params: {username: project.user} }">{{ project.user }}</NuxtLink>
             </p>
 
             <!-- Dates -->
@@ -95,12 +84,12 @@ const route = useRoute()
             </div>
           </div>
 
-          <!-- Repo Link -->
-          <div class="mb-4">
-            <a :href="project.repo_link" target="_blank" class="link link-primary">
-              View Repository
-            </a>
-          </div>
+<!--          &lt;!&ndash; Repo Link &ndash;&gt;-->
+<!--          <div class="mb-4">-->
+<!--            <a :href="project.repo_link" target="_blank" class="link link-primary">-->
+<!--              View Repository-->
+<!--            </a>-->
+<!--          </div>-->
 
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 mb-6">
@@ -142,6 +131,10 @@ const route = useRoute()
       </button>
     </div>
 
+  </div>
+
+  <div v-else class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
+    <span class="loading loading-dots loading-xl"></span>
   </div>
 </template>
 
