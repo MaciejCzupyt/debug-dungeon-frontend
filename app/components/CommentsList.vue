@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type {Comment} from "~/types/comment";
 
+const {user} = useAuth()
+
 defineProps<{ comments: Comment[] }>()
 </script>
 
@@ -33,7 +35,7 @@ defineProps<{ comments: Comment[] }>()
         </span>
 
         <!-- Delete wrapper -->
-        <div v-if="comment.user==='YOU'" class="flex gap-1">
+        <div v-if="comment.user === user?.username" class="flex gap-1">
           <a href="/TODO" class="link link-secondary">Delete</a>
         </div>
       </div>
