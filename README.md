@@ -79,42 +79,43 @@ bun run preview
     - [x] List user comments
 ### Logic
 - [ ] Auth
-  - [x] Sessions
+  - [x] <span style="color:red">Sessions</span>
   - [ ] Login
-    - [x] General
-    - [x] Initial validation logic
-    - [ ] Proper validation logic
-  - [x] Logout
+    - [x] <span style="color:red">General</span>.
+    - [x] <span style="color:green">Initial validation logic</span>
+    - [ ] <span style="color:blue">Proper value validation logic</span>
+  - [ ] <span style="color:red">Logout functionality</span>
+    - [ ] <span style="color:red">Fix issues with not logging out</span>
   - [ ] Register
-      - [x] General
-      - [x] Initial validation logic
-      - [ ] Proper validation logic
+    - [x] <span style="color:red">General</span>
+    - [x] <span style="color:green">Initial validation logic</span>
+    - [ ] <span style="color:blue">Proper value validation logic</span>.
 - [x] Navbar
-  - [x] Login/Register/Profile responsiveness based on if user is logged in
-  - [x] New Project button visibility based on if user is logged in
+  - [x] <span style="color:red">Responsive design based on if user is logged in</span>
+  - [x] <span style="color:red">New Project button visibility based on if user is logged in</span>
 - [x] Home page view
-  - [x] Responsiveness to if user is logged in
+  - [x] <span style="color:red">Responsive design based on if user is logged in</span>
 - [ ] Projects list view
-  - [x] List of projects
-  - [ ] Filter
-    - [ ] Shirt size filter functionality
-    - [ ] Tag filter functionality
-    - [ ] User filter functionality
-  - [ ] Search functionality
-  - [ ] Pagination functionality
-  - [x] Proper project id functionality
+  - [x] <span style="color:red">List of projects</span>
+  - [ ] <span style="color:green">Filter</span>
+    - [ ] <span style="color:green">Shirt size filter functionality</span>
+    - [ ] <span style="color:green">Tag filter functionality</span>
+    - [ ] <span style="color:green">User filter functionality</span>
+  - [ ] <span style="color:green">Search functionality</span>
+  - [ ] <span style="color:green">Pagination functionality</span>
+  - [x] <span style="color:red">Proper project id functionality</span>
 - [ ] Project detail view
-  - [x] General details view
-  - [ ] Responsiveness to session and owner of project along with the edit/delete buttons
-  - [ ] Edit functionality
-  - [ ] Delete functionality
+  - [x] <span style="color:red">General details view</span>
+  - [ ] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons </span>
+  - [ ] <span style="color:red">Edit functionality</span>
+  - [ ] <span style="color:red">Delete functionality</span>
   - [ ] Comments
-    - [x] Comments list
-    - [ ] Responsiveness to whether user owns comment along with the delete button
-      - [ ] Delete functionality
-    - [ ] Create comment functionality
-- [ ] Create Project functionality
-- [ ] Edit Project functionality
-- [ ] User details
-  - [ ] List user projects
-  - [ ] List user comments
+    - [x] <span style="color:red">Comments list</span>
+    - [ ] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
+      - [ ] <span style="color:green">Delete functionality</span>
+    - [ ] <span style="color:red">Create comment functionality</span>
+- [ ] <span style="color:red">Create Project functionality</span>
+- [ ] <span style="color:red">Edit Project functionality</span>
+- [ ] <span style="color:red">User details</span>
+  - [ ] <span style="color:red">List user projects</span>
+  - [ ] <span style="color:red">List user comments</span>
