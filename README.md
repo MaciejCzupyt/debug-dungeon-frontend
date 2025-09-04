@@ -95,19 +95,21 @@ bun run preview
 - [x] Home page view
   - [x] Responsiveness to if user is logged in
 - [ ] Projects list view
-  - [ ] List of projects
+  - [x] List of projects
   - [ ] Filter
     - [ ] Shirt size filter functionality
     - [ ] Tag filter functionality
     - [ ] User filter functionality
   - [ ] Search functionality
   - [ ] Pagination functionality
-  - [ ] Proper project id functionality
+  - [x] Proper project id functionality
 - [ ] Project detail view
+  - [x] General details view
   - [ ] Responsiveness to session and owner of project along with the edit/delete buttons
   - [ ] Edit functionality
   - [ ] Delete functionality
   - [ ] Comments
+    - [x] Comments list
     - [ ] Responsiveness to whether user owns comment along with the delete button
       - [ ] Delete functionality
     - [ ] Create comment functionality
