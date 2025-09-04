@@ -5,6 +5,7 @@ import type {Comment} from '~/types/comment.ts'
 const router = useRouter()
 const route = useRoute()
 const {fetchApi} = useApi()
+const {user} = useAuth()
 
 const project = ref<Project | null>(null)
 const comments = ref<Comment[]>([])
@@ -147,11 +148,11 @@ const shirtSizeToIndex = (size: string) => {
 
     <!-- Edit/Delete buttons -->
     <div class="flex flex-col w-25 gap-2 mt-2">
-      <button class="btn rounded-xl btn-soft btn-warning"
-      @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })">
+      <button v-if="user?.username === project.user" class="btn rounded-xl btn-soft btn-warning"
+              @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })">
         Edit
       </button>
-      <button class="btn rounded-xl btn-soft btn-error" @click="router.push('/TODO')">
+      <button v-if="user?.username === project.user" class="btn rounded-xl btn-soft btn-error" @click="router.push('/TODO')">
         Delete
       </button>
     </div>
