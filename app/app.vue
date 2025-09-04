@@ -5,7 +5,6 @@ onMounted(async () => {
   await useCsrf()
 
   const {user} = useAuth()
-  console.log(`app.vue-User:${user}`)
   try {
     if(user.value === null) {
       const fetchedUser = await fetchApi(`users/me`)
