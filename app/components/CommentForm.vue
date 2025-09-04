@@ -1,5 +1,12 @@
 <script setup lang="ts">
+const buttonText = ref("Submit")
 
+function handleMouseDown() {
+  buttonText.value = "UwU"
+}
+function handleMouseLeave() {
+  buttonText.value = "Submit"
+}
 </script>
 
 <template>
@@ -13,7 +20,7 @@
 
       <!-- Content -->
       <textarea class="textarea w-full h-36" placeholder="Add a comment..."/>
-      <button class="btn btn-soft self-end">Submit</button>
+      <button class="btn btn-soft self-end w-[80px]" @mousedown="handleMouseDown" @mouseleave="handleMouseLeave" @mouseup="handleMouseLeave">{{buttonText}}</button>
     </form>
 </template>
 
