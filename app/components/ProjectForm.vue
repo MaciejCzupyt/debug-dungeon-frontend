@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import type {Project} from "~/types/project";
+
+const props = defineProps<{ project?: Project }>()
+const emit = defineEmits<{
+  (e: "submit", value: {
+    title:string,
+    shirt_size: string,
+    tags: string[],
+    description: string,
+  }): void
+}>()
+
 const projectForm = reactive({
   title: "",
   shirt_size: "",
@@ -10,10 +22,19 @@ const toggleShirtSize = (size: string) => {
   projectForm.shirt_size = size
 }
 
+onMounted(() => {
+  if(props.project) {
+    Object.assign(projectForm, props.project)
+  }
+})
+
+function handleSubmit() {
+  emit('submit', projectForm)
+}
 </script>
 
 <template>
-  <form class="flex flex-col gap-2">
+  <form class="flex flex-col gap-2" @submit.prevent="handleSubmit">
     <!-- Title -->
     <fieldset class="fieldset">
       <legend class="fieldset-legend gap-0">
