@@ -1,21 +1,24 @@
 <script setup lang="ts">
+const props = defineProps<{tags: string[]}>()
+const emit = defineEmits<{
+  (e: 'update:tags', value: string[]): void
+}>()
 const newTag = ref('')
-const tags = ref<string[]>([])
 
 function addTag() {
-  if( newTag.value.trim() && !tags.value.includes(newTag.value)) {
-    tags.value.push(newTag.value.trim())
+  if( newTag.value.trim() && !props.tags.includes(newTag.value)) {
+    emit('update:tags', [...props.tags, newTag.value.trim()])
     newTag.value = ""
   }
 }
 
 function removeTag(tag: string) {
-  tags.value = tags.value.filter((t) => t !== tag)
+  emit('update:tags', props.tags.filter((t) => t !== tag))
 }
 </script>
 
 <template>
-  <fieldset class="fieldset h-">
+  <fieldset class="fieldset">
     <legend class="fieldset-legend">Tags</legend>
 
     <input
@@ -27,7 +30,6 @@ function removeTag(tag: string) {
     />
 
     <div class="flex flex-wrap gap-2 items-center">
-<!--      <span class="text-lg">Tags:</span>-->
       <span
           v-for="tag in tags"
           :key="tag"

@@ -60,7 +60,7 @@ const toggleShirtSize = (size: string) => {
     </fieldset>
 
     <!-- Tags -->
-    <TagsInput/>
+    <TagsInput v-model:tags="projectForm.tags" />
 
     <!-- Description -->
     <fieldset class="fieldset">

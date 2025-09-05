@@ -20,7 +20,8 @@
 
     <input type="text" placeholder="Filter by user..." class="input" />
 
-    <TagsInput/>
+    <!-- TODO proper implementation etc -->
+    <TagsInput :tags="[]"/>
 
     <button class="btn">Apply</button>
   </div>
