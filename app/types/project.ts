@@ -3,7 +3,7 @@ export interface Project {
     title: string,
     description: string,
     shirt_size: string,
-    tags: string[], //as in, an array of strings
+    tags: string[],
     user: string,
     created: string, //date?
     modified: string, //date?
