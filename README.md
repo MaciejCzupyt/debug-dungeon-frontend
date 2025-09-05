@@ -108,15 +108,18 @@ bun run preview
 - [ ] Project detail view
   - [x] <span style="color:red">General details view</span>
   - [x] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons</span>
-  - [ ] <span style="color:red">Edit functionality</span>
+  - [x] <span style="color:red">Edit button functionality</span>
   - [ ] <span style="color:red">Delete functionality</span>
   - [ ] Comments
     - [x] <span style="color:red">Comments list</span>
     - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
     - [ ] <span style="color:green">Delete functionality</span>
     - [ ] <span style="color:red">Create comment functionality</span>
-- [ ] <span style="color:red">Create Project functionality</span>
-- [ ] <span style="color:red">Edit Project functionality</span>
+- [ ] ProjectForm (create/edit project)
+  - [x] <span style="color:red">Edit project</span>
+  - [x] <span style="color:red">Create project</span>
+  - [ ] <span style="color:green">Validation</span>
+  - [ ] <span style="color:green">Error handling</span>
 - [ ] <span style="color:red">User details</span>
   - [ ] <span style="color:red">List user projects</span>
   - [ ] <span style="color:red">List user comments</span>
