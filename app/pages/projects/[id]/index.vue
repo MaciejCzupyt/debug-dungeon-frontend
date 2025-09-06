@@ -10,14 +10,14 @@ const {user} = useAuth()
 const project = ref<Project | null>(null)
 const comments = ref<Comment[]>([])
 
-const commentLoading = ref(false)
+const commentsLoading = ref(false)
 const projectLoading = ref(false)
+
+const id = computed(() => route.params.id)
 
 onMounted(async () => {
   projectLoading.value = true
-  commentLoading.value = true
-
-  const id = computed(() => route.params.id)
+  commentsLoading.value = true
 
   project.value = await fetchApi(`projects/${id.value}`, {
     method: "GET",
@@ -29,8 +29,37 @@ onMounted(async () => {
     method: "GET",
     headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
   })
-  commentLoading.value = false
+  commentsLoading.value = false
 })
+
+const deleteConfirmationModal = ref<HTMLDialogElement | null>(null)
+
+const openDeleteModal = () => {
+  deleteConfirmationModal.value?.showModal()
+}
+
+const handleDelete = async () => {
+  try {
+    // Are you sure?
+
+    projectLoading.value = true
+    commentsLoading.value = true
+
+    await fetchApi(`projects/${id.value}/`, {
+      method: "DELETE",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+    })
+
+    await router.push({
+      name: 'projects'
+    })
+  } catch (e) {
+    console.log("Unexpected error:", e)
+  } finally {
+    projectLoading.value = true
+    commentsLoading.value = true
+  }
+}
 
 const shirtSizeToIndex = (size: string) => {
   if (size === "S") return 0
@@ -126,7 +155,7 @@ const shirtSizeToIndex = (size: string) => {
           </div>
         </div>
 
-        <div v-if="commentLoading" class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+        <div v-if="commentsLoading" class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
           <span class="loading loading-dots loading-xl"></span>
         </div>
 
@@ -143,11 +172,18 @@ const shirtSizeToIndex = (size: string) => {
 
     <!-- Edit/Delete buttons -->
     <div class="flex flex-col w-25 gap-2 mt-2">
-      <button v-if="user?.username === project.user" class="btn rounded-xl btn-soft btn-warning"
-              @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })">
+      <button
+        v-if="user?.username === project.user"
+        class="btn rounded-xl btn-soft btn-warning"
+        @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })"
+      >
         Edit
       </button>
-      <button v-if="user?.username === project.user" class="btn rounded-xl btn-soft btn-error" @click="router.push('/TODO')">
+      <button
+        v-if="user?.username === project.user"
+        class="btn rounded-xl btn-soft btn-error"
+        @click="openDeleteModal"
+      >
         Delete
       </button>
     </div>
@@ -157,6 +193,21 @@ const shirtSizeToIndex = (size: string) => {
   <div v-else class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
     <span class="loading loading-dots loading-xl"></span>
   </div>
+
+  <dialog ref="deleteConfirmationModal" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold text-center">Are you sure?</h3>
+      <p class="pt-4 text-center">Deleting this project will delete all the comments attached to it.</p>
+      <p class="pb-4 text-center">This cannot be undone</p>
+      <div class="modal-action flex justify-center">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn btn-soft w-[180px] mx-2">Go back</button>
+          <button class="btn btn-soft w-[180px] btn-error mx-2" @click="handleDelete">Delete project</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </template>
 
 <style scoped>
