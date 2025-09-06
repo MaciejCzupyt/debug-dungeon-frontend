@@ -8,12 +8,15 @@ defineProps<{ comments: Comment[] }>()
 
 <template>
   <ul>
+    <li class="flex justify-center" v-if="comments.length===0">
+      No comments
+    </li>
     <li class="flex flex-col" v-for="comment in comments" :key="comment.id">
       <div class="flex justify-between">
         <!-- user -->
         <p class="font-bold">
           <NuxtLink
-              :to="{name:'user-username-projects', params:{username:comment.user}}"
+              :to="{name:'user-username', params:{username:comment.user}}"
           >
             {{comment.user}}
           </NuxtLink>

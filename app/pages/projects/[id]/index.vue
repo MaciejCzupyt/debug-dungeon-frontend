@@ -88,7 +88,7 @@ const shirtSizeToIndex = (size: string) => {
             <p class="text-sm text-gray-500">
               <!-- The potential warning "Cannot resolve file '$'{'project.user}`' " is false -->
               <NuxtLink
-                  :to="{ name: 'user-username-projects', params: {username: project.user} }">{{ project.user }}</NuxtLink>
+                  :to="{ name: 'user-username', params: {username: project.user} }">{{ project.user }}</NuxtLink>
             </p>
 
             <!-- Dates -->
@@ -131,17 +131,12 @@ const shirtSizeToIndex = (size: string) => {
         </div>
 
         <!-- CommentForm and CommentsList -->
-        <div v-else-if="comments.length !== 0" class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
+        <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
           <CommentForm/>
           <div class="divider my-1"/>
           <CommentsList :comments="comments"/>
         </div>
 
-        <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
-          <CommentForm/>
-          <div class="divider my-1"/>
-          No comments yet
-        </div>
 
       </div>
     </div>
