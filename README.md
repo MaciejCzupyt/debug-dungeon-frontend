@@ -109,11 +109,11 @@ bun run preview
   - [x] <span style="color:red">General details view</span>
   - [x] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons</span>
   - [x] <span style="color:red">Edit button functionality</span>
-  - [ ] <span style="color:red">Delete functionality</span>
+  - [x] <span style="color:red">Delete functionality</span>
   - [ ] Comments
     - [x] <span style="color:red">Comments list</span>
     - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
-    - [ ] <span style="color:green">Delete functionality</span>
+    - [x] <span style="color:green">Delete functionality</span>
     - [ ] <span style="color:red">Create comment functionality</span>
 - [ ] ProjectForm (create/edit project)
   - [x] <span style="color:red">Edit project</span>

@@ -163,7 +163,10 @@ const shirtSizeToIndex = (size: string) => {
         <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
           <CommentForm/>
           <div class="divider my-1"/>
-          <CommentsList :comments="comments"/>
+          <CommentsList
+              :comments="comments"
+              @deleted="id => comments = comments.filter(c => c.id !== id)"
+          />
         </div>
 
 
@@ -198,7 +201,7 @@ const shirtSizeToIndex = (size: string) => {
     <div class="modal-box">
       <h3 class="text-lg font-bold text-center">Are you sure?</h3>
       <p class="pt-4 text-center">Deleting this project will delete all the comments attached to it.</p>
-      <p class="pb-4 text-center">This cannot be undone</p>
+      <p class="pb-4 text-center">This cannot be undone.</p>
       <div class="modal-action flex justify-center">
         <form method="dialog">
           <!-- if there is a button in form, it will close the modal -->
