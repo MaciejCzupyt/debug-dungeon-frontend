@@ -33,7 +33,7 @@ const onLogout = async () => {
             <li v-if="!user"><a href="/auth/log-in">Login</a></li>
             <li v-if="!user"><a href="/auth/register">Register</a></li>
             <li v-if="user"><a @click="onLogout">Logout</a></li>
-            <li v-if="user"><a :href="`/user/${user.username}/projects`">Profile</a></li>
+            <li v-if="user"><a :href="`/user/${user.username}/`">Profile</a></li>
           </ul>
         </details>
       </li>
