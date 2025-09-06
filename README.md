@@ -120,6 +120,6 @@ bun run preview
   - [x] <span style="color:red">Create project</span>
   - [ ] <span style="color:green">Validation</span>
   - [ ] <span style="color:green">Error handling</span>
-- [ ] <span style="color:red">User details</span>
-  - [ ] <span style="color:red">List user projects</span>
-  - [ ] <span style="color:red">List user comments</span>
+- [x] User details
+  - [x] <span style="color:red">List user projects</span>
+  - [x] <span style="color:red">List user comments</span>
