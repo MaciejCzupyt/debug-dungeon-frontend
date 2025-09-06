@@ -8,8 +8,14 @@ defineProps<{ comments: Comment[] }>()
 
 <template>
   <ul>
-    <li class="flex justify-center" v-if="comments.length===0">
-      No comments
+    <li v-if="comments.length===0"
+        class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block"
+    >
+      <div class="card-body">
+        <div class="flex justify-center items-center">
+          No comments to list
+        </div>
+      </div>
     </li>
     <li class="flex flex-col" v-for="comment in comments" :key="comment.id">
       <div class="flex justify-between">
