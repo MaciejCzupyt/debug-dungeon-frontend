@@ -51,7 +51,7 @@ function handleSubmit() {
       </div>
     </div>
 
-    <input type="text" placeholder="Filter by user..." class="input" />
+    <input v-model="filterForm.user" type="text" placeholder="Filter by user..." class="input" />
 
     <!-- TODO proper implementation etc -->
     <TagsInput :tags="[]"/>
