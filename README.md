@@ -84,6 +84,7 @@ bun run preview
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
     - [ ] <span style="color:blue">Proper value validation logic</span>
+    - [ ] <span style="color:blue">Error handling</span>
   - [ ] Logout functionality
     - [x] <span style="color:red">General</span>
     - [ ] <span style="color:green">Fix issues with not logging out</span>
@@ -91,11 +92,13 @@ bun run preview
     - [x] <span style="color:red">General</span>
     - [x] <span style="color:green">Initial validation logic</span>
     - [ ] <span style="color:blue">Proper value validation logic</span>.
+    - [ ] <span style="color:blue">Error handling</span>
 - [x] Navbar
   - [x] <span style="color:red">Responsive design based on if user is logged in</span>
   - [x] <span style="color:red">New Project button visibility based on if user is logged in</span>
 - [x] Home page view
   - [x] <span style="color:red">Responsive design based on if user is logged in</span>
+  - [ ] <span style="color:blue">Fix initial UI flickering to guest page when user is logged in</span>
 - [ ] Projects list view
   - [x] <span style="color:red">List of projects</span>
   - [ ] <span style="color:green">Filter</span>
@@ -114,7 +117,10 @@ bun run preview
     - [x] <span style="color:red">Comments list</span>
     - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
     - [x] <span style="color:green">Delete functionality</span>
-    - [ ] <span style="color:red">Create comment functionality</span>
+    - [ ] <span style="color:red">CommentForm</span>
+      - [x] <span style="color:red">Create comment functionality</span>
+      - [ ] <span style="color:green">Validation</span>
+      - [ ] <span style="color:green">Error handling</span>
 - [ ] ProjectForm (create/edit project)
   - [x] <span style="color:red">Edit project</span>
   - [x] <span style="color:red">Create project</span>

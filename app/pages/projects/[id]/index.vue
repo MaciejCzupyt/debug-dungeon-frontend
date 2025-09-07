@@ -38,10 +38,33 @@ const openDeleteModal = () => {
   deleteConfirmationModal.value?.showModal()
 }
 
+const handleCommentSubmit = async (comment: {content: string, repository_link: string}) => {
+  try {
+    commentsLoading.value = true
+
+    await fetchApi(`comments/`, {
+      method: "POST",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+      body: {
+        content: comment.content,
+        repository_link: comment.repository_link,
+        project: id.value
+      }
+    })
+
+    comments.value = await fetchApi(`projects/${id.value}/comments/`, {
+      method: "GET",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+    })
+  } catch(e) {
+    console.log("Unexpected error: ", e)
+  } finally {
+    commentsLoading.value = false
+  }
+}
+
 const handleDelete = async () => {
   try {
-    // Are you sure?
-
     projectLoading.value = true
     commentsLoading.value = true
 
@@ -161,7 +184,9 @@ const shirtSizeToIndex = (size: string) => {
 
         <!-- CommentForm and CommentsList -->
         <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
-          <CommentForm/>
+          <CommentForm
+              @submit="handleCommentSubmit"
+          />
           <div class="divider my-1"/>
           <CommentsList
               :comments="comments"
