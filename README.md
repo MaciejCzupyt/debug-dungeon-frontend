@@ -102,10 +102,10 @@ bun run preview
   - [ ] <span style="color:blue">Fix initial UI flickering to guest page when user is logged in</span>
 - [ ] Projects list view
   - [x] <span style="color:red">List of projects</span>
-  - [ ] Filter
-    - [ ] <span style="color:red">Shirt size filter functionality</span>
-    - [ ] <span style="color:red">Tag filter functionality</span>
-    - [ ] <span style="color:red">User filter functionality</span>
+  - [x] Filter
+    - [x] <span style="color:red">Shirt size filter functionality</span>
+    - [x] <span style="color:red">Tag filter functionality</span>
+    - [x] <span style="color:red">User filter functionality</span>
   - [ ] <span style="color:red">Search functionality</span>
   - [ ] <span style="color:green">Pagination functionality</span>
   - [x] <span style="color:red">Proper project id functionality</span>

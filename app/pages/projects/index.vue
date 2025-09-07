@@ -7,15 +7,35 @@ const {fetchApi} = useApi()
 const projects = ref<Project[]>([])
 
 onMounted(async () => {
-  projects.value = await fetchApi("projects", {
+  projects.value = await fetchApi("projects/", {
     method: "GET",
     headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
   })
   projectsLoading.value = false
 })
 
-const onFilterSubmit = async () => {
-  // TODO
+const onFilterSubmit = async (filter: {shirt_size?: string, user?: string, tags: string[],}) => {
+  try {
+    projectsLoading.value = true
+
+    const params = new URLSearchParams()
+
+    if (filter.shirt_size) params.append('shirt_size', filter.shirt_size)
+    if (filter.user) params.append('user', filter.user)
+    if (filter.tags.length !== 0) params.append('tags', filter.tags.join(","))
+
+    const querystring = params.toString()
+
+    projects.value = await fetchApi(`projects/?${querystring}`, {
+      method: "GET",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+    })
+  } catch(e) {
+    console.log("Unexpected error: ", e)
+  } finally {
+    projectsLoading.value = false
+  }
+
 }
 </script>
 
