@@ -80,6 +80,7 @@ bun run preview
 ### Logic
 - [ ] Auth
   - [x] <span style="color:red">Sessions</span>
+  - [ ] <span style="color:red">Redirect to login if unauthorized</span>
   - [ ] Login
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
