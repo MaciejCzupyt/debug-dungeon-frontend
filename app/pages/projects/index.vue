@@ -14,12 +14,13 @@ onMounted(async () => {
   projectsLoading.value = false
 })
 
-const onFilterSubmit = async (filter: {shirt_size?: string, user?: string, tags: string[],}) => {
+const onFilterSubmit = async (filter: {search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
   try {
     projectsLoading.value = true
 
     const params = new URLSearchParams()
 
+    if (filter.search) params.append('search', filter.search)
     if (filter.shirt_size) params.append('shirt_size', filter.shirt_size)
     if (filter.user) params.append('user', filter.user)
     if (filter.tags.length !== 0) params.append('tags', filter.tags.join(","))
@@ -35,7 +36,6 @@ const onFilterSubmit = async (filter: {shirt_size?: string, user?: string, tags:
   } finally {
     projectsLoading.value = false
   }
-
 }
 </script>
 
@@ -44,8 +44,6 @@ const onFilterSubmit = async (filter: {shirt_size?: string, user?: string, tags:
   <div class="flex flex-col w-full mt-5 mb-10 items-center">
     <div class="flex gap-5 w-full justify-center">
       <div class="flex flex-col items-start w-xs max-w-xs">
-        <SearchBar></SearchBar>
-        <div class="divider"/>
         <label class="self-center font-bold">Filter</label>
         <Filter @submit-filter="onFilterSubmit"></Filter>
       </div>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const emit = defineEmits<{(e: "submitFilter", value: {shirt_size: string, user: string, tags: string[]}): void}>()
+const emit = defineEmits<{(e: "submitFilter", value: {search: string, shirt_size: string, user: string, tags: string[]}): void}>()
 
 const filterForm = reactive({
+  search: "",
   shirt_size: "",
   user: "",
   tags: [],
@@ -21,6 +22,22 @@ function handleSubmit() {
 
 <template>
   <form class="flex flex-col gap-3 w-full" @submit.prevent="handleSubmit">
+    <label class="input">
+      <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            fill="none"
+            stroke="currentColor"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </g>
+      </svg>
+      <input v-model="filterForm.search" type="search" class="grow" placeholder="Search" />
+    </label>
+
     <div class="flex justify-between">
       <p>Shirt size:</p>
       <div class="rating gap-1">
