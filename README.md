@@ -101,11 +101,11 @@ bun run preview
   - [ ] <span style="color:blue">Fix initial UI flickering to guest page when user is logged in</span>
 - [ ] Projects list view
   - [x] <span style="color:red">List of projects</span>
-  - [ ] <span style="color:green">Filter</span>
-    - [ ] <span style="color:green">Shirt size filter functionality</span>
-    - [ ] <span style="color:green">Tag filter functionality</span>
-    - [ ] <span style="color:green">User filter functionality</span>
-  - [ ] <span style="color:green">Search functionality</span>
+  - [ ] Filter
+    - [ ] <span style="color:red">Shirt size filter functionality</span>
+    - [ ] <span style="color:red">Tag filter functionality</span>
+    - [ ] <span style="color:red">User filter functionality</span>
+  - [ ] <span style="color:red">Search functionality</span>
   - [ ] <span style="color:green">Pagination functionality</span>
   - [x] <span style="color:red">Proper project id functionality</span>
 - [ ] Project detail view
@@ -117,7 +117,7 @@ bun run preview
     - [x] <span style="color:red">Comments list</span>
     - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
     - [x] <span style="color:green">Delete functionality</span>
-    - [ ] <span style="color:red">CommentForm</span>
+    - [ ] CommentForm
       - [x] <span style="color:red">Create comment functionality</span>
       - [ ] <span style="color:green">Validation</span>
       - [ ] <span style="color:green">Error handling</span>

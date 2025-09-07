@@ -1,8 +1,18 @@
 <script setup lang="ts">
+const emit = defineEmits<{(e: "submitFilter", value: {shirt_size: string, user: string, tags: string[]}): void}>()
+
+const filterForm = reactive({
+  shirt_size: "",
+  user: "",
+  tags: [],
+})
+function handleSubmit() {
+  emit("submitFilter", filterForm)
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-3 w-full">
+  <form class="flex flex-col gap-3 w-full" @submit.prevent="handleSubmit">
     <div class="flex justify-between">
       <p>Shirt size:</p>
       <!--
@@ -24,7 +34,7 @@
     <TagsInput :tags="[]"/>
 
     <button class="btn">Apply</button>
-  </div>
+  </form>
 </template>
 
 <style scoped>

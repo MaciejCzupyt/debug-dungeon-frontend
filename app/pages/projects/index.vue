@@ -13,6 +13,10 @@ onMounted(async () => {
   })
   projectsLoading.value = false
 })
+
+const onFilterSubmit = async () => {
+  // TODO
+}
 </script>
 
 <template>
@@ -23,10 +27,9 @@ onMounted(async () => {
         <SearchBar></SearchBar>
         <div class="divider"/>
         <label class="self-center font-bold">Filter</label>
-        <Filter></Filter>
+        <Filter @submit-filter="onFilterSubmit"></Filter>
       </div>
       <ProjectsList :projects-loading="projectsLoading" :projects="projects" class="w-full"/>
-<!--      <ProjectsList :projects="exampleProjects" class="w-full"/>-->
     </div>
     <Pagination class="self-center mt-5"/>
   </div>
