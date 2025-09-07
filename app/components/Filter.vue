@@ -6,6 +6,14 @@ const filterForm = reactive({
   user: "",
   tags: [],
 })
+
+const toggleShirtSize = (size: string) => {
+  if(filterForm.shirt_size === size)
+    filterForm.shirt_size = ""
+  else
+    filterForm.shirt_size = size
+}
+
 function handleSubmit() {
   emit("submitFilter", filterForm)
 }
@@ -15,18 +23,33 @@ function handleSubmit() {
   <form class="flex flex-col gap-3 w-full" @submit.prevent="handleSubmit">
     <div class="flex justify-between">
       <p>Shirt size:</p>
-      <!--
-      TODO radio buttons cannot be unchecked, if a user checks a shirt size but then wants to uncheck it to search
-        for projects without specifying the exact shirt size, he is unable to
-       -->
       <div class="rating gap-1">
-        <input type="radio" name="rating-3" class="mask mask-tshirt bg-green-400" aria-label="S"/>
-        <input type="radio" name="rating-3" class="mask mask-tshirt bg-yellow-400" aria-label="M" />
-        <input type="radio" name="rating-3" class="mask mask-tshirt bg-red-400" aria-label="L" />
+        <input
+            type="radio"
+            name="rating-3"
+            :checked="filterForm.shirt_size==='S'"
+            @click="toggleShirtSize('S')"
+            class="mask mask-tshirt bg-green-400"
+            aria-label="S"
+        />
+        <input
+            type="radio"
+            name="rating-3"
+            :checked="filterForm.shirt_size==='M'"
+            @click="toggleShirtSize('M')"
+            class="mask mask-tshirt bg-yellow-400"
+            aria-label="M"
+        />
+        <input
+            type="radio"
+            name="rating-3"
+            :checked="filterForm.shirt_size==='L'"
+            @click="toggleShirtSize('L')"
+            class="mask mask-tshirt bg-red-400"
+            aria-label="L"
+        />
       </div>
     </div>
-
-    <!--      <input type="text" placeholder="tag1,tag2,tag3..." class="input" />-->
 
     <input type="text" placeholder="Filter by user..." class="input" />
 
