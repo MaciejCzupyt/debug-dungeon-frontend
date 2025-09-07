@@ -53,8 +53,7 @@ function handleSubmit() {
 
     <input v-model="filterForm.user" type="text" placeholder="Filter by user..." class="input" />
 
-    <!-- TODO proper implementation etc -->
-    <TagsInput :tags="[]"/>
+    <TagsInput v-model:tags="filterForm.tags"/>
 
     <button class="btn">Apply</button>
   </form>
