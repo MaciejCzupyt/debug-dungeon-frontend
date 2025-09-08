@@ -63,8 +63,8 @@ function toggleProjectComments() {
 
       <!-- Projects/Comments buttons -->
       <div class="flex w-full gap-2 justify-center">
-        <button :class="['btn btn-soft w-[30%]', {'projectsList': 'btn-disabled'}]" @click="projectsList=true">Projects</button>
-        <button :class="['btn btn-soft w-[30%]', {'!projectsList': 'btn-disabled'}]" @click="projectsList=false">Comments</button>
+        <button :class="['btn btn-soft w-[30%]', {'btn-disabled': projectsList}]" @click="projectsList=true">Projects</button>
+        <button :class="['btn btn-soft w-[30%]', {'btn-disabled': !projectsList}]" @click="projectsList=false">Comments</button>
       </div>
 
       <div class="divider"/>
