@@ -55,7 +55,7 @@
           <h2 class="card-title">ACCOUNT DETAILS</h2>
           <p>View or edit your account, projects and comments.</p>
           <div class="card-actions justify-center">
-            <router-link class="btn flex-1" :to="`/user/${user.username}/projects`">View account details</router-link>
+            <router-link class="btn flex-1" :to="`/user/${user.username}/`">View account details</router-link>
           </div>
         </div>
       </div>
