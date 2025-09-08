@@ -100,13 +100,14 @@ bun run preview
 - [x] Home page view
   - [x] <span style="color:red">Responsive design based on if user is logged in</span>
   - [ ] <span style="color:blue">Fix initial UI flickering to guest page when user is logged in</span>
-- [ ] Projects list view
+- [x] Projects list view
   - [x] <span style="color:red">List of projects</span>
   - [x] Filter
+    - [x] <span style="color:green">Router query</span>
     - [x] <span style="color:red">Shirt size filter functionality</span>
     - [x] <span style="color:red">Tag filter functionality</span>
     - [x] <span style="color:red">User filter functionality</span>
-  - [ ] <span style="color:red">Search functionality</span>
+- [x] <span style="color:red">Search functionality</span>
   - [ ] <span style="color:green">Pagination functionality</span>
   - [x] <span style="color:red">Proper project id functionality</span>
 - [ ] Project detail view
@@ -130,3 +131,5 @@ bun run preview
 - [x] User details
   - [x] <span style="color:red">List user projects</span>
   - [x] <span style="color:red">List user comments</span>
+- [ ] Tags
+  - [ ] <span style="color:blue">Suggest existing tags on user input</span>

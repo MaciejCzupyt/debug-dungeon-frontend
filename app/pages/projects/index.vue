@@ -5,6 +5,10 @@ const projectsLoading = ref(true)
 const route = useRoute()
 const router = useRouter()
 
+// const totalResults = ref(0)
+const totalPages = ref(0)
+const currentPage = ref(0)
+
 const {fetchApi} = useApi()
 const projects = ref<Project[]>([])
 
@@ -16,19 +20,30 @@ onMounted(async () => {
     tags: route.query.tags ? (route.query.tags as string).split(',') : []
   }
 
-  await onFilterSubmit(initialFilter)
+  await onFetch(initialFilter)
 })
 
-const onFilterSubmit = async (filter: {search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
+function getPageFromUrl(url: string | null): number | null {
+  if (!url) return null
+  const parsed = new URL(url)
+  const pageParam = parsed.searchParams.get("page")
+  return pageParam ? Number(pageParam) : null
+}
+
+function handlePage(page: number) {
+  onFetch({page: page, tags: []})
+}
+
+const onFetch = async (query: {page?: number, search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
   try {
     projectsLoading.value = true
 
     const params: Record<string, string> = {}
-
-    if (filter.search) params.search = filter.search
-    if (filter.shirt_size) params.shirt_size = filter.shirt_size
-    if (filter.user) params.user = filter.user
-    if (filter.tags.length) params.tags = filter.tags.join(",")
+    if (query.page) params.page = query.page.toString()
+    if (query.search) params.search = query.search
+    if (query.shirt_size) params.shirt_size = query.shirt_size
+    if (query.user) params.user = query.user
+    if (query.tags.length) params.tags = query.tags.join(",")
 
     await router.replace({query: params})
 
@@ -38,6 +53,11 @@ const onFilterSubmit = async (filter: {search?: string, shirt_size?: string, use
       method: "GET",
       headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
     })
+    console.log("Response.count ", response.count)
+    console.log("response.previous ", response.previous)
+    console.log("response.next ", response.next)
+    totalPages.value = Math.ceil(response.count/10)
+    currentPage.value = query.page ?? getPageFromUrl(response.next) - 1 ?? 1
     projects.value = response.results
   } catch(e) {
     console.log("Unexpected error: ", e)
@@ -53,11 +73,11 @@ const onFilterSubmit = async (filter: {search?: string, shirt_size?: string, use
     <div class="flex gap-5 w-full justify-center">
       <div class="flex flex-col items-start w-xs max-w-xs">
         <label class="self-center font-bold">Filter</label>
-        <Filter @submit-filter="onFilterSubmit"></Filter>
+        <Filter @submit-filter="onFetch"></Filter>
       </div>
       <ProjectsList :projects-loading="projectsLoading" :projects="projects" class="w-full"/>
     </div>
-    <Pagination class="self-center mt-5"/>
+    <Pagination @page="handlePage" :total_pages="totalPages" :current_page="currentPage" class="self-center mt-5"/>
   </div>
 </template>
 
