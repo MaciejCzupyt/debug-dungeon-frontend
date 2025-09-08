@@ -86,9 +86,8 @@ bun run preview
     - [x] <span style="color:green">Initial validation logic</span>
     - [ ] <span style="color:blue">Proper value validation logic</span>
     - [ ] <span style="color:blue">Error handling</span>
-  - [ ] Logout functionality
+  - [x] Logout functionality
     - [x] <span style="color:red">General</span>
-    - [ ] <span style="color:green">Fix issues with not logging out</span>
   - [ ] Register
     - [x] <span style="color:red">General</span>
     - [x] <span style="color:green">Initial validation logic</span>
@@ -99,7 +98,6 @@ bun run preview
   - [x] <span style="color:red">New Project button visibility based on if user is logged in</span>
 - [x] Home page view
   - [x] <span style="color:red">Responsive design based on if user is logged in</span>
-  - [ ] <span style="color:blue">Fix initial UI flickering to guest page when user is logged in</span>
 - [x] Projects list view
   - [x] <span style="color:red">List of projects</span>
   - [x] Filter
@@ -107,8 +105,8 @@ bun run preview
     - [x] <span style="color:red">Shirt size filter functionality</span>
     - [x] <span style="color:red">Tag filter functionality</span>
     - [x] <span style="color:red">User filter functionality</span>
-- [x] <span style="color:red">Search functionality</span>
-  - [ ] <span style="color:green">Pagination functionality</span>
+    - [x] <span style="color:red">Search functionality</span>
+  - [x] <span style="color:green">Pagination functionality</span>
   - [x] <span style="color:red">Proper project id functionality</span>
 - [ ] Project detail view
   - [x] <span style="color:red">General details view</span>
@@ -133,3 +131,9 @@ bun run preview
   - [x] <span style="color:red">List user comments</span>
 - [ ] Tags
   - [ ] <span style="color:blue">Suggest existing tags on user input</span>
+
+### Fixes
+- [ ] Home page flickering from guest page to user page
+- [ ] Not logging out sometimes, even after restarting server
+- [ ] FOUC after implementing pagination
+- [ ] CSS issues with text going out of bound in project detail view, comments etc
