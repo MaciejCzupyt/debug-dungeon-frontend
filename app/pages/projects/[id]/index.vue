@@ -152,12 +152,17 @@ const shirtSizeToIndex = (size: string) => {
             </div>
           </div>
 
-<!--          &lt;!&ndash; Repo Link &ndash;&gt;-->
-<!--          <div class="mb-4">-->
-<!--            <a :href="project.repo_link" target="_blank" class="link link-primary">-->
-<!--              View Repository-->
-<!--            </a>-->
-<!--          </div>-->
+          <!-- Repo Link -->
+          <div v-if="project.repository_link" class="mb-4">
+            <a :href="project.repository_link" target="_blank" class="link link-primary">
+              Repo: {{project.repository_link}}
+            </a>
+          </div>
+
+          <!-- no link -->
+          <p v-else class="text-gray-600 pb-4 underline underline-offset-2">
+            No repository link
+          </p>
 
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 mb-6">

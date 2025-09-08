@@ -6,6 +6,7 @@ const emit = defineEmits<{
   (e: "submit", value: {
     title:string,
     shirt_size: string,
+    repository_link: string,
     tags: string[],
     description: string,
   }): void
@@ -14,6 +15,7 @@ const emit = defineEmits<{
 const projectForm = reactive({
   title: "",
   shirt_size: "",
+  repository_link: "",
   tags: [],
   description: "",
 })
@@ -80,12 +82,22 @@ function handleSubmit() {
       </div>
     </fieldset>
 
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend gap-0">
+        Repository link
+      </legend>
+      <input v-model="projectForm.repository_link" type="url" class="input" placeholder="www.example.com" />
+    </fieldset>
+
     <!-- Tags -->
     <TagsInput v-model:tags="projectForm.tags" />
 
     <!-- Description -->
     <fieldset class="fieldset">
-      <legend class="fieldset-legend">Description</legend>
+      <legend class="fieldset-legend">
+        Description
+        <span class="text-red-600">*</span>
+      </legend>
       <textarea v-model="projectForm.description" class="textarea w-full h-64" placeholder="Add a description of the project..."/>
     </fieldset>
 
