@@ -2,35 +2,43 @@
 import type {Project} from '~/types/project'
 
 const projectsLoading = ref(true)
+const route = useRoute()
+const router = useRouter()
 
 const {fetchApi} = useApi()
 const projects = ref<Project[]>([])
 
 onMounted(async () => {
-  projects.value = await fetchApi("projects/", {
-    method: "GET",
-    headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
-  })
-  projectsLoading.value = false
+  const initialFilter = {
+    search: route.query.search as string || '',
+    shirt_size: route.query.shirt_size as string || '',
+    user: route.query.user as string || '',
+    tags: route.query.tags ? (route.query.tags as string).split(',') : []
+  }
+
+  await onFilterSubmit(initialFilter)
 })
 
 const onFilterSubmit = async (filter: {search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
   try {
     projectsLoading.value = true
 
-    const params = new URLSearchParams()
+    const params: Record<string, string> = {}
 
-    if (filter.search) params.append('search', filter.search)
-    if (filter.shirt_size) params.append('shirt_size', filter.shirt_size)
-    if (filter.user) params.append('user', filter.user)
-    if (filter.tags.length !== 0) params.append('tags', filter.tags.join(","))
+    if (filter.search) params.search = filter.search
+    if (filter.shirt_size) params.shirt_size = filter.shirt_size
+    if (filter.user) params.user = filter.user
+    if (filter.tags.length) params.tags = filter.tags.join(",")
 
-    const querystring = params.toString()
+    await router.replace({query: params})
 
-    projects.value = await fetchApi(`projects/?${querystring}`, {
+    const querystring = new URLSearchParams(params).toString()
+
+    const response = await fetchApi(`projects/?${querystring}`, {
       method: "GET",
       headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
     })
+    projects.value = response.results
   } catch(e) {
     console.log("Unexpected error: ", e)
   } finally {
