@@ -1,7 +1,10 @@
 export default defineNuxtRouteMiddleware(() => {
-    const { user } = useAuth()
+    const { user, isLoading } = useAuth()
 
-    // redirect the user to the login screen if they're not authenticated
+    // infinite loop, what could go wrong?
+    while(isLoading.value)
+
+    // redirect unauthenticated users to login page
     if (!user.value) {
         return navigateTo('/auth/log-in')
     }
