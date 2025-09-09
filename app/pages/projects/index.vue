@@ -53,9 +53,6 @@ const onFetch = async (query: {page?: number, search?: string, shirt_size?: stri
       method: "GET",
       headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
     })
-    console.log("Response.count ", response.count)
-    console.log("response.previous ", response.previous)
-    console.log("response.next ", response.next)
     totalPages.value = Math.ceil(response.count/10)
     currentPage.value = query.page ?? getPageFromUrl(response.next) - 1 ?? 1
     projects.value = response.results
