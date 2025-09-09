@@ -1,6 +1,17 @@
+<script setup>
+const {user, isLoading} = useAuth()
+</script>
+
+<style scoped>
+</style>
+
 <template>
   <title>Debug-Dungeon - Index</title>
-  <main class="main flex flex-col mt-5 text-center items-center gap-8">
+  <main v-if="isLoading" class="main flex flex-col mt-5 text-center items-center gap-8">
+    <span class="pt-[30vh] loading loading-dots loading-xl"></span>
+  </main>
+
+  <main v-else class="main flex flex-col mt-5 text-center items-center gap-8">
     <div>
       <h1 class="text-5xl font-bold mb-4 [text-shadow:_0_2px_4px_rgba(0,0,0,1)]">
         Welcome to Debug-Dungeon!
@@ -8,7 +19,7 @@
       <p>A forum for creating, listing and discussing programming projects.</p>
     </div>
 
-    <!--Section displayed if user is not logged in-->
+    <!-- Guest section -->
     <div v-if="!user" class="card bg-neutral w-96 shadow-sm">
       <div class="card-body">
         <h2 class="card-title">New to the site?</h2>
@@ -20,6 +31,7 @@
       </div>
     </div>
 
+    <!-- User section -->
     <div v-else class="card bg-neutral shadow-sm">
       <div class="card-body flex">
         <h2 class="card-title">Hello {{user.username}}!</h2>
@@ -27,6 +39,7 @@
     </div>
 
     <div class="flex gap-5">
+
       <div v-if="user" class="card bg-base-300 w-96 shadow-sm">
         <div class="card-body">
           <h2 class="card-title">CREATE PROJECT</h2>
@@ -38,6 +51,7 @@
           </div>
         </div>
       </div>
+
       <div class="card bg-base-300 w-96 shadow-sm">
         <div class="card-body">
           <h2 class="card-title">VIEW PROJECTS</h2>
@@ -50,6 +64,7 @@
           </div>
         </div>
       </div>
+
       <div v-if="user" class="card bg-base-300 w-96 shadow-sm">
         <div class="card-body">
           <h2 class="card-title">ACCOUNT DETAILS</h2>
@@ -59,14 +74,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </main>
 </template>
-
-<script setup>
-const {user} = useAuth()
-// TODO fix the page initially showing guest page for a second before flickering to the correct page
-</script>
-
-<style scoped>
-</style>

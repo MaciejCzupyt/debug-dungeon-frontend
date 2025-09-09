@@ -3,11 +3,13 @@ interface User {
     date_joined: string
 }
 
-const user = ref<User | null>(null)
+const user = ref<User | null | undefined>(undefined)
 const error = ref<Error | null>(null)
 
 export const useAuth = () => {
     const {fetchApi} = useApi()
+
+    const isLoading = computed(() => user.value === undefined)
 
     const login = async (username: string, password: string) => {
         try {
@@ -25,7 +27,6 @@ export const useAuth = () => {
         }
     }
 
-
     const logout = async () => {
         await fetchApi(`auth/logout`, {
             method: "POST",
@@ -34,5 +35,5 @@ export const useAuth = () => {
         })
         user.value = null
     }
-    return { user, error, login, logout }
+    return { user, error, login, logout, isLoading }
 }

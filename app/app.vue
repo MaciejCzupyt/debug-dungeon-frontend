@@ -6,9 +6,11 @@ onMounted(async () => {
 
   const {user} = useAuth()
   try {
-    if(user.value === null) {
+    if(user.value === undefined) {
       const fetchedUser = await fetchApi(`users/me`)
-      if(fetchedUser.username !== "")
+      if(fetchedUser.username === "")
+        user.value = null
+      else
         user.value = fetchedUser
     }
 

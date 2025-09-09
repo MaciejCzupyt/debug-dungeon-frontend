@@ -80,7 +80,7 @@ bun run preview
 ### Logic
 - [ ] Auth
   - [x] <span style="color:red">Sessions</span>
-  - [ ] <span style="color:red">Redirect to login if unauthorized</span>
+  - [x] <span style="color:red">Redirect to login if unauthorized</span>
   - [ ] Login
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
@@ -133,8 +133,8 @@ bun run preview
   - [ ] <span style="color:blue">Suggest existing tags on user input</span>
 
 ### Fixes
-- [ ] Home page flickering from guest page to user page
-- [ ] Not logging out sometimes, even after restarting server
+- [x] Home page flickering from guest page to user page
+- [x] (Haven't happened in a while ¯\_(ツ)_/¯ ) Not logging out sometimes, even after restarting server
 - [x] (Fixed itself??) FOUC after implementing pagination
 - [ ] CSS issues with text going out of bound in project detail view, comments etc
 - [x] Filter not being applied when scrolling through pages
