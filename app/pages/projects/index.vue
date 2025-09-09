@@ -20,7 +20,7 @@ onMounted(async () => {
     tags: route.query.tags ? (route.query.tags as string).split(',') : []
   }
 
-  await onFetch(initialFilter)
+  await handleFetch(initialFilter)
 })
 
 function getPageFromUrl(url: string | null): number | null {
@@ -31,10 +31,18 @@ function getPageFromUrl(url: string | null): number | null {
 }
 
 function handlePage(page: number) {
-  onFetch({page: page, tags: []})
+  const filter = {
+    page: page,
+    search: route.query.search as string || '',
+    shirt_size: route.query.shirt_size as string || '',
+    user: route.query.user as string || '',
+    tags: route.query.tags ? (route.query.tags as string).split(',') : []
+  }
+
+  handleFetch(filter)
 }
 
-const onFetch = async (query: {page?: number, search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
+const handleFetch = async (query: {page?: number, search?: string, shirt_size?: string, user?: string, tags: string[],}) => {
   try {
     projectsLoading.value = true
 
@@ -70,7 +78,7 @@ const onFetch = async (query: {page?: number, search?: string, shirt_size?: stri
     <div class="flex gap-5 w-full justify-center">
       <div class="flex flex-col items-start w-xs max-w-xs">
         <label class="self-center font-bold">Filter</label>
-        <Filter @submit-filter="onFetch"></Filter>
+        <Filter @submit-filter="handleFetch"></Filter>
       </div>
       <ProjectsList :projects-loading="projectsLoading" :projects="projects" class="w-full"/>
     </div>
