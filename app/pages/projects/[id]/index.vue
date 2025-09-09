@@ -190,8 +190,13 @@ const shirtSizeToIndex = (size: string) => {
         <!-- CommentForm and CommentsList -->
         <div v-else class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8">
           <CommentForm
+              v-if="user"
               @submit="handleCommentSubmit"
           />
+          <div v-else class="flex justify-center gap-1">
+            <span>Want to add a comment?</span>
+            <a href="/auth/log-in" class="link link-primary">Log in</a>
+          </div>
           <div class="divider my-1"/>
           <CommentsList
               :comments="comments"
