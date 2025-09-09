@@ -34,7 +34,7 @@ const handleDelete = async () => {
 </script>
 
 <template>
-  <ul>
+  <ul class="w-full">
     <li v-if="comments.length===0"
         class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-2xl border border-base-300 block"
     >
