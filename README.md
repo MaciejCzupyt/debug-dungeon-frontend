@@ -135,5 +135,6 @@ bun run preview
 ### Fixes
 - [ ] Home page flickering from guest page to user page
 - [ ] Not logging out sometimes, even after restarting server
-- [ ] FOUC after implementing pagination
+- [x] (Fixed itself??) FOUC after implementing pagination
 - [ ] CSS issues with text going out of bound in project detail view, comments etc
+- [x] Filter not being applied when scrolling through pages
