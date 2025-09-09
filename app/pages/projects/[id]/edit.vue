@@ -2,6 +2,10 @@
 import type {Project} from "~/types/project";
 import type {ProjectForm} from "~/types/projectForm";
 
+definePageMeta({
+  middleware: ['authenticated'],
+})
+
 const {fetchApi} = useApi()
 const route = useRoute()
 const router = useRouter()

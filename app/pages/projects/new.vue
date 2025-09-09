@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type {ProjectForm} from "~/types/projectForm"
 
+definePageMeta({
+  middleware: ['authenticated'],
+})
+
 const {fetchApi} = useApi()
 const router = useRouter()
 
