@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type {Project} from "~/types/project"
 import type {Comment} from "~/types/comment"
+import type {User} from "~/types/user"
 
 const userLoading = ref(true)
 const projectsList = ref(true)
 
-const user = ref<{username: string, date_joined: string}|null>(null)
+const user = ref<User|null>(null)
 const projects = ref<Project[]>([])
 const comments = ref<Comment[]>([])
 
@@ -35,10 +36,6 @@ onMounted(async () => {
     userLoading.value = false
   }
 })
-
-function toggleProjectComments() {
-
-}
 </script>
 
 <template>
