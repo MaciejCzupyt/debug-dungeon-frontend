@@ -1,5 +1,5 @@
 export const useCsrf = async () => {
     const {fetchApi} = useApi()
-
-    await fetchApi(`csrf`)
+    if(!useCookie('csrftoken').value)
+        await fetchApi(`csrf`)
 }
