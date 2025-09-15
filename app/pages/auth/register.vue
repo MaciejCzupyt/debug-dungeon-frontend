@@ -37,7 +37,7 @@ const handleSubmit = async () => {
     })
 
     await login(username.value, password.value)
-    if(!error)
+    if(!error.value)
       await router.push('/')
 
   } catch(err: any) {
