@@ -78,21 +78,21 @@ bun run preview
     - [x] List user projects
     - [x] List user comments
 ### Logic
-- [ ] Auth
+- [x] Auth
   - [x] <span style="color:red">Sessions</span>
   - [x] <span style="color:red">Redirect to login if unauthorized</span>
   - [ ] Login
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
-    - [ ] <span style="color:blue">Proper value validation logic</span>
-    - [ ] <span style="color:blue">Error handling</span>
+    - [x] <span style="color:blue">Proper value validation logic</span>
+    - [x] <span style="color:blue">Error handling</span>
   - [x] Logout functionality
     - [x] <span style="color:red">General</span>
-  - [ ] Register
+  - [x] Register
     - [x] <span style="color:red">General</span>
     - [x] <span style="color:green">Initial validation logic</span>
-    - [ ] <span style="color:blue">Proper value validation logic</span>.
-    - [ ] <span style="color:blue">Error handling</span>
+    - [x] <span style="color:blue">Proper value validation logic</span>.
+    - [x] <span style="color:blue">Error handling</span>
 - [x] Navbar
   - [x] <span style="color:red">Responsive design based on if user is logged in</span>
   - [x] <span style="color:red">New Project button visibility based on if user is logged in</span>
@@ -113,19 +113,19 @@ bun run preview
   - [x] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons</span>
   - [x] <span style="color:red">Edit button functionality</span>
   - [x] <span style="color:red">Delete functionality</span>
-  - [ ] Comments
+  - [x] Comments
     - [x] <span style="color:red">Comments list</span>
     - [x] <span style="color:green">Responsiveness to whether user owns comment along with the delete button</span>
     - [x] <span style="color:green">Delete functionality</span>
-    - [ ] CommentForm
+    - [x] CommentForm
       - [x] <span style="color:red">Create comment functionality</span>
-      - [ ] <span style="color:green">Validation</span>
-      - [ ] <span style="color:green">Error handling</span>
-- [ ] ProjectForm (create/edit project)
+      - [x] <span style="color:green">Validation</span>
+      - [x] <span style="color:green">Error handling</span>
+- [x] ProjectForm (create/edit project)
   - [x] <span style="color:red">Edit project</span>
   - [x] <span style="color:red">Create project</span>
-  - [ ] <span style="color:green">Validation</span>
-  - [ ] <span style="color:green">Error handling</span>
+  - [x] <span style="color:green">Validation</span>
+  - [x] <span style="color:green">Error handling</span>
 - [x] User details
   - [x] <span style="color:red">List user projects</span>
   - [x] <span style="color:red">List user comments</span>
