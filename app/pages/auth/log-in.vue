@@ -2,6 +2,9 @@
 const username = ref('')
 const password = ref('')
 
+const { login, error} = useAuth()
+const router = useRouter()
+
 const errors = ref<{username?: string, password?: string}>({})
 
 const validate = () => {
@@ -14,14 +17,12 @@ const validate = () => {
   return Object.keys(errors.value).length === 0
 }
 
-const { login, error} = useAuth()
-const router = useRouter()
-
 const handleSubmit = async () => {
   if(!validate()) return
 
   await login(username.value, password.value)
-  await router.push('/')
+  if(!error)
+    await router.push('/')
 }
 </script>
 
@@ -58,7 +59,7 @@ const handleSubmit = async () => {
         <button class="btn btn-soft mt-5 self-end">Log In</button>
       </form>
     </div>
-    <p v-if="error" class="text-sm text-red-500 mt-3">{{ error }}</p>
+    <p v-if="error" class="text-sm text-red-500 mt-3">{{ error.message }}</p>
   </div>
 </template>
 

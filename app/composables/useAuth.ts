@@ -22,8 +22,15 @@ export const useAuth = () => {
 
             user.value = fetchedUser
             useCookie('user').value = fetchedUser
-        } catch(err) {
-            error.value = err as Error
+        } catch(err: any) {
+            if (err.data) {
+                error.value = {
+                    name: err.data.name ?? "AuthError",
+                    message: err.data.detail ?? "Unexpected Authentication Error"
+                }
+            } else {
+                error.value = err as Error
+            }
         }
     }
 
