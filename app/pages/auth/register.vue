@@ -37,10 +37,24 @@ const handleSubmit = async () => {
     })
 
     await login(username.value, password.value)
-    await router.push('/')
+    if(!error)
+      await router.push('/')
 
-  } catch(err) {
-    error.value = err as Error
+  } catch(err: any) {
+    if(err.data) {
+      /*
+        TODO
+          having errors be inconsistent (i.e. err.data.detail or err.data.username
+          ... or god forbid err.data.username[0] because the response is also in an array
+          feels a little stupid, will probably have to change this later so it's more consistents
+       */
+      error.value = {
+        name: err.data.name ?? "AuthError",
+        message: err.data.detail ?? err.data.username[0] ?? "Unexpected Authentication Error"
+      }
+    } else {
+      error.value = err as Error
+    }
   }
 }
 </script>
@@ -90,7 +104,7 @@ const handleSubmit = async () => {
         <button class="btn btn-soft mt-5 self-end">Register</button>
       </form>
     </div>
-    <p v-if="error" class="text-sm text-red-500 mt-3">{{ error }}</p>
+    <p v-if="error" class="text-sm text-red-500 mt-3">{{ error.message }}</p>
   </div>
 </template>
 
