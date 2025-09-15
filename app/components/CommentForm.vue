@@ -17,20 +17,25 @@ const commentForm = reactive({
   repository_link: "",
 })
 
-const errors = reactive<{
+const errors = ref<{
   repository_link?: string,
   content?: string
 }>({})
 
 const validate = () => {
-  if(commentForm.repository_link && !isValidUrl(commentForm.repository_link)) errors.repository_link = "URL not valid"
-  if(commentForm.content.trim().length < 3) errors.content = "Comment content must be at least 3 characters long"
+  errors.value = {}
 
-  return Object.keys(errors).length === 0
+  if(commentForm.repository_link && !isValidUrl(commentForm.repository_link)) errors.value.repository_link = "URL not valid"
+  if(commentForm.content.trim().length < 3) errors.value.content = "Comment content must be at least 3 characters long"
+
+  return Object.keys(errors.value).length === 0
 }
 
 function handleSubmit() {
-  if(!validate()) return
+  if(!validate()) {
+    console.log("invalid form")
+    return
+  }
 
   emit('submit', commentForm)
 }
