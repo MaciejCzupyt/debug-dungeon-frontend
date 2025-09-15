@@ -5,11 +5,22 @@ const emit = defineEmits<{
 }>()
 const newTag = ref('')
 
+const errors = ref<{tags?: string}>({})
+
+const validate = () => {
+  errors.value = {}
+  if(!newTag.value.trim()) errors.value.tags = "Tag cannot be empty"
+  if(props.tags.includes(newTag.value)) errors.value.tags = "Tag already exists"
+  if(newTag.value.length > 16) errors.value.tags = "Tag must have max 15 characters"
+
+  return Object.keys(errors.value).length === 0
+}
+
 function addTag() {
-  if( newTag.value.trim() && !props.tags.includes(newTag.value)) {
-    emit('update:tags', [...props.tags, newTag.value.trim()])
-    newTag.value = ""
-  }
+  if(!validate()) return
+
+  emit('update:tags', [...props.tags, newTag.value.trim()])
+  newTag.value = ""
 }
 
 function removeTag(tag: string) {
@@ -28,6 +39,8 @@ function removeTag(tag: string) {
         placeholder="Add a tag and press enter..."
         class="input input-bordered w-full max-w-xs"
     />
+
+    <p class="text-red-500 min-h-[1.25rem]">{{ errors.tags }}</p>
 
     <div class="flex flex-wrap gap-2 items-center">
       <span
