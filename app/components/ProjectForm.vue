@@ -2,9 +2,18 @@
 import type {Project} from "~/types/project";
 import {isValidUrl} from "~/composables/isValidUrl"
 
-const props = defineProps<{ project?: Project }>()
+const props = defineProps<{
+  project?: Project,
+  errors: {
+    title?: string,
+    shirt_size?: string,
+    repository_link?: string,
+    description?: string,
+  }
+}>()
 
 const emit = defineEmits<{
+  (e: "update:errors", value: typeof props.errors): void
   (e: "submit", value: {
     title:string,
     shirt_size: string,
@@ -22,26 +31,21 @@ const projectForm = reactive({
   description: "",
 })
 
-const errors = ref<{
-  title?: string,
-  shirt_size?: string,
-  repository_link?: string,
-  description?: string,
-}>({})
-
 const validate = () => {
-  errors.value = {}
+  const localErrors: typeof props.errors = {}
 
   if(projectForm.title.length > 50 || projectForm.title.length < 3)
-    errors.value.title = "Title must be between 3 and 50 characters long"
+    localErrors.title = "Title must be between 3 and 50 characters long"
   if(projectForm.shirt_size.length === 0)
-    errors.value.shirt_size = "Please select a shirt size"
+    localErrors.shirt_size = "Please select a shirt size"
   if(projectForm.repository_link && !isValidUrl(projectForm.repository_link))
-    errors.value.repository_link = "URL is not valid"
+    localErrors.repository_link = "URL is not valid"
   if(projectForm.description.length < 10)
-    errors.value.description = "Description must be at least 10 characters long"
+    localErrors.description = "Description must be at least 10 characters long"
 
-  return Object.keys(errors.value).length === 0
+  emit("update:errors", {...localErrors})
+
+  return Object.keys(localErrors).length === 0
 }
 
 const toggleShirtSize = (size: string) => {
@@ -70,7 +74,7 @@ function handleSubmit() {
         <span class="text-red-600">*</span>
       </legend>
       <input v-model="projectForm.title" type="text" class="input" placeholder="Add a title..." />
-      <p class="text-red-500 min-h-[1.25rem]">{{ errors.title }}</p>
+      <p class="text-red-500 min-h-[1.25rem]">{{ props.errors.title }}</p>
     </fieldset>
 
     <!-- Shirt size -->
@@ -107,7 +111,7 @@ function handleSubmit() {
           />
         </div>
       </div>
-      <p class="text-red-500 min-h-[1.25rem]">{{ errors.shirt_size }}</p>
+      <p class="text-red-500 min-h-[1.25rem]">{{ props.errors.shirt_size }}</p>
     </fieldset>
 
     <!-- Repository link -->
@@ -116,7 +120,7 @@ function handleSubmit() {
         Repository link
       </legend>
       <input v-model="projectForm.repository_link" type="url" class="input" placeholder="www.example.com" />
-      <p class="text-red-500 min-h-[1.25rem]">{{ errors.repository_link }}</p>
+      <p class="text-red-500 min-h-[1.25rem]">{{ props.errors.repository_link }}</p>
     </fieldset>
 
     <!-- Tags -->
@@ -129,7 +133,7 @@ function handleSubmit() {
         <span class="text-red-600">*</span>
       </legend>
       <textarea v-model="projectForm.description" class="textarea w-full h-64" placeholder="Add a description of the project..."/>
-      <p class="text-red-500 min-h-[1.25rem]">{{ errors.description }}</p>
+      <p class="text-red-500 min-h-[1.25rem]">{{ props.errors.description }}</p>
     </fieldset>
 
     <!-- Submit -->
