@@ -81,7 +81,7 @@ bun run preview
 - [x] Auth
   - [x] <span style="color:red">Sessions</span>
   - [x] <span style="color:red">Redirect to login if unauthorized</span>
-  - [ ] Login
+  - [x] Login
     - [x] <span style="color:red">General</span>.
     - [x] <span style="color:green">Initial validation logic</span>
     - [x] <span style="color:blue">Proper value validation logic</span>
@@ -108,7 +108,7 @@ bun run preview
     - [x] <span style="color:red">Search functionality</span>
   - [x] <span style="color:green">Pagination functionality</span>
   - [x] <span style="color:red">Proper project id functionality</span>
-- [ ] Project detail view
+- [x] Project detail view
   - [x] <span style="color:red">General details view</span>
   - [x] <span style="color:red">Responsiveness to session and owner of project along with the edit/delete buttons</span>
   - [x] <span style="color:red">Edit button functionality</span>
