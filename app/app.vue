@@ -4,13 +4,12 @@ const {user} = useAuth()
 
 onMounted(async () => {
   const {fetchApi} = useApi()
-  // fetch csrf token on app startup
-  await useCsrf()
-
-
   const userCookie = useCookie<User | null>('user', { default: () => null })
 
   try {
+    // fetch csrf token on app startup
+    await useCsrf()
+
     let fetchedUser = null
 
     if(user.value === undefined) {
@@ -37,15 +36,15 @@ onMounted(async () => {
 </script>
 
 <template>
-    <!--
-    TODO
-     the user check is suboptimal, but I've had a load of issues with proper hydration and I can't bother to find an
-     appropriate fix at the moment. Setting the user in a plugin will likely work, but some issues have popped up
-     when attempting to implement it that way.
-     ¯\_(ツ)_/¯
-    -->
-    <NuxtRouteAnnouncer />
-    <AppHeader v-if="user !== undefined"/>
-    <NuxtPage v-if="user !== undefined"/>
-    <AppFooter v-if="user !== undefined"/>
+  <!--
+  TODO
+   the user check is suboptimal, but I've had a load of issues with proper hydration and I can't bother to find an
+   appropriate fix at the moment. Setting the user in a plugin will likely work, but some issues have popped up
+   when attempting to implement it that way.
+   ¯\_(ツ)_/¯
+  -->
+  <NuxtRouteAnnouncer />
+  <AppHeader v-if="user !== undefined"/>
+  <NuxtPage v-if="user !== undefined"/>
+  <AppFooter v-if="user !== undefined"/>
 </template>
