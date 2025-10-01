@@ -79,10 +79,9 @@ const handleDelete = async () => {
       </div>
 
       <!-- content -->
-      <!-- TODO fix comments overflowing and not wrapping (might be due to code fragment in <style> -->
-      <p class="text-gray-300">
-        {{comment.content}}
-      </p>
+      <div class="prose max-w-full text-gray-300">
+        <p>{{comment.content}}</p>
+      </div>
 
       <div class="divider my-1"/>
     </li>
@@ -108,6 +107,8 @@ const handleDelete = async () => {
 
 <style scoped>
 .prose p {
-  white-space: pre-line;
+  white-space: pre-wrap;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
 }
 </style>

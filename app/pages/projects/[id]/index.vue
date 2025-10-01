@@ -250,6 +250,8 @@ const shirtSizeToIndex = (size: string) => {
 
 <style scoped>
 .prose p {
-  white-space: pre-line;
+  white-space: pre-wrap;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
 }
 </style>
