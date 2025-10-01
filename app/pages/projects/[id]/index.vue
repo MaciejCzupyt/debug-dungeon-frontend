@@ -16,20 +16,27 @@ const projectLoading = ref(false)
 const id = computed(() => route.params.id)
 
 onMounted(async () => {
-  projectLoading.value = true
-  commentsLoading.value = true
+  try {
+    projectLoading.value = true
+    commentsLoading.value = true
 
-  project.value = await fetchApi(`projects/${id.value}`, {
-    method: "GET",
-    headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
-  })
-  projectLoading.value = false
+    project.value = await fetchApi(`projects/${id.value}`, {
+      method: "GET",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+    })
 
-  comments.value = await fetchApi(`projects/${id.value}/comments`, {
-    method: "GET",
-    headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
-  })
-  commentsLoading.value = false
+    comments.value = await fetchApi(`projects/${id.value}/comments`, {
+      method: "GET",
+      headers: {'X-CSRFToken': useCookie('csrftoken').value ?? ''},
+    })
+
+  } catch(e) {
+    //pass
+  } finally {
+    projectLoading.value = false
+    commentsLoading.value = false
+  }
+
 })
 
 const deleteConfirmationModal = ref<HTMLDialogElement | null>(null)
@@ -95,8 +102,12 @@ const shirtSizeToIndex = (size: string) => {
 <template>
   <title>Debug-Dungeon - Project Details</title>
 
+  <div v-if="projectLoading" class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
+    <span class="loading loading-dots loading-xl"></span>
+  </div>
+
   <!-- Page wrapper -->
-  <div v-if="!projectLoading && project" class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
+  <div v-else class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
 
     <!-- Back button -->
     <button class="btn rounded-xl w-25 btn-soft mt-2" @click="$router.push('/projects')">
@@ -104,7 +115,7 @@ const shirtSizeToIndex = (size: string) => {
     </button>
 
     <!-- Content -->
-    <div class="flex justify-center items-center w-full max-w-5xl">
+    <div v-if="project" class="flex justify-center items-center w-full max-w-5xl">
       <div class="self-center w-full max-w-5xl">
 
         <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
@@ -204,21 +215,31 @@ const shirtSizeToIndex = (size: string) => {
           />
         </div>
 
+      </div>
+    </div>
+
+    <div v-else-if="!project">
+      <div class="self-center w-full max-w-5xl">
+
+        <div class="w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
+            No project with that id found
+        </div>
 
       </div>
+
     </div>
 
     <!-- Edit/Delete buttons -->
     <div class="flex flex-col w-25 gap-2 mt-2">
       <button
-        v-if="user?.username === project.user"
+        v-if="user?.username === project?.user"
         class="btn rounded-xl btn-soft btn-warning"
         @click="router.push({ name: 'projects-id-edit', params: { id: route.params.id } })"
       >
         Edit
       </button>
       <button
-        v-if="user?.username === project.user"
+        v-if="user?.username === project?.user"
         class="btn rounded-xl btn-soft btn-error"
         @click="openDeleteModal"
       >
@@ -226,10 +247,6 @@ const shirtSizeToIndex = (size: string) => {
       </button>
     </div>
 
-  </div>
-
-  <div v-else class="flex justify-center w-full mt-5 mb-10 px-10 gap-5">
-    <span class="loading loading-dots loading-xl"></span>
   </div>
 
   <dialog ref="deleteConfirmationModal" class="modal">
