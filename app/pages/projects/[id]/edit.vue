@@ -16,6 +16,15 @@ const project = ref<Project | null>(null)
 
 const id = computed(() => route.params.id)
 
+const error = ref<Error | null>(null)
+
+const errors = ref<{
+  title?: string,
+  shirt_size?: string,
+  repository_link?: string,
+  description?: string,
+}>({})
+
 onMounted(async () => {
   projectLoading.value = true
 
@@ -42,8 +51,16 @@ const handleSubmit = async (project: ProjectForm) => {
     })
 
     await router.push(`/projects/${id.value}`)
-  } catch(e) {
-    console.log(e)
+  } catch (err: any) {
+    if(err.data) {
+      errors.value = Object.fromEntries(
+          Object.entries(err.data).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v])
+      )
+      error.value = {name: "Form Error", message: "Please fix the errors above"}
+    } else {
+      error.value = err as Error
+    }
+
   } finally {
     projectLoading.value = false
   }
@@ -63,7 +80,8 @@ const handleSubmit = async (project: ProjectForm) => {
   <div v-else-if="project.user === user?.username" class="flex justify-center mt-5 mb-10 px-10 gap-5">
     <div class="flex flex-col w-full max-w-5xl bg-base-200 shadow-lg rounded-2xl p-8 mb-10">
       <h1 class="text-xl font-bold">Edit a project</h1>
-      <ProjectForm :project="project" @submit="handleSubmit"/>
+      <ProjectForm v-model:errors="errors" :project="project" @submit="handleSubmit"/>
+      <p v-if="error" class="text-sm text-red-500 mt-3">{{ error.message }}</p>
     </div>
   </div>
 

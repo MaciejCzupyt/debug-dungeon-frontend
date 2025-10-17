@@ -35,15 +35,15 @@ const handleSubmit = async (project: ProjectForm) => {
       await router.push(`/projects/${newProject.id}`)
     else
       await router.push(`/projects}`)
-    } catch (err: any) {
-    if(err.data) {
-      errors.value = Object.fromEntries(
-          Object.entries(err.data).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v])
-      )
-      error.value = {name: "Form Error", message: "Please fix the errors above"}
-    } else {
-      error.value = err as Error
-    }
+  } catch (err: any) {
+  if(err.data) {
+    errors.value = Object.fromEntries(
+        Object.entries(err.data).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v])
+    )
+    error.value = {name: "Form Error", message: "Please fix the errors above"}
+  } else {
+    error.value = err as Error
+  }
 
   } finally {
     projectLoading.value = false
