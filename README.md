@@ -1,6 +1,11 @@
 # Debug Dungeon
 
 The frontend of a project for listing, creating and commenting on educational programming mini-projects.
+## Screenshots
+Home page
+![HomePage.png](docs/HomePage.png)
+List of projects
+![ProjectsList.png](docs/ProjectsList.png)
 
 ## Setup
 Make sure to install dependencies:
