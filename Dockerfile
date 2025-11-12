@@ -2,14 +2,12 @@
 FROM oven/bun:1 AS build
 WORKDIR /app
 
-# Copy dependency files and install
-#COPY package.json bun.lockb* ./
-RUN bun install #--frozen-lockfile
 
 # Copy source and build
 COPY . .
 ARG NUXT_PUBLIC_API_BASE
 ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
+RUN bun install
 RUN bun run build
 
 # Stage 2: Run with Bun (Nuxt Nitro server)
